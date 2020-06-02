@@ -1,0 +1,55 @@
+# Suivi d'alternance
+
+**Entreprise** : Conseil Départemental de Meurthe-et-Moselle
+
+**Service** : Système d'Information Géographique
+
+**Apprenti** : Hugo Jahnke
+
+**Maître d'apprentissage** : Hervé Vitoux
+
+**Tuteur académique** : Yann Boniface
+
+
+
+## Introduction
+
+J'ai eu l'opportunité d'effectuer mon année d'étude en Licence Professionnelle CIASIE en tant qu'apprenti au sein du Conseil Départemental de Meurthe-et-Moselle et plus particulièrement dans le service Système d'Information Géographique (SIG).
+
+Ce compte rendu intermédiaire me permettra de présenter l'institution, le service qui m'a accueilli ainsi que le projet sur lequel je travaille depuis plusieurs mois.
+
+## Le Conseil Départemental
+
+Le Conseil Départemental de Meurthe-et-Moselle est l'institution administrative qui se place entre les communes du département de Meurthe-et-Moselle et la région Grand-Est.
+
+Il est composé d'une part d'une assemblée de représentants élus (46 conseillers départementaux) et d'autre part de différents services administratifs implantés dans les six territoires du département (Maison du département, maison des solidarités, services de routes...) et composés de fonctionnaires territoriaux (3000 agents, 140 métiers).
+
+Bien que l'action principale soit la solidarité avec des problématiques telles que l'enfance et la famille, les personnes âgées, handicapées ou en difficulté sociales, le Conseil Départemental possède de nombreuses compétences parmis lesquelles :
+
+* **L'éducation** : Patrimoine des collèges et restauration scolaire.
+
+* **La culture** : médiathèque départementale, Animation socio-éducative et socio-culturelle,  restauration d'édifices conservation des musées et acquisition de collections.
+
+* **L'environnement** : eau, assainissement, gestion de l'espace, protection des espaces naturels sensibles, sentiers de randonnées.
+
+Notons que certaines compétences sont partagées avec d'autres collectivités locales ou avec l'État.
+
+## Les services départementaux
+
+Pour s'occuper au mieux des différentes thématiques dans lesquelles il est engagé, le Conseil Départemental est divisié en une multitude de directions, rattachées à un des trois grands pôles :
+
+* **Ressources** : Finances, Ressources humaines, Logistique, Immobilier, Systèmes d'Information.
+
+* **Solidarités** : Autonomie, Enfance et famille, Action sociale et insertion.
+
+* **Territoires** : Infrastructure et mobilité, Appui aux territoires et environnement, Développement, Éducation.
+
+Chaque direction est elle-même divisée en services départementaux qui se focalisent sur une thématique précise (voir [l'organigrame général des services départementaux](http://meurthe-et-moselle.fr/sites/default/files/Page%20Service/PDF/Org_General202004.pdf)).
+
+## Le service SIG
+
+Au sein du service des Coopérations territoriales, directement rattaché à la Direction du Développement, le service SIG
+
+## Bourgs-Centres
+
+## 

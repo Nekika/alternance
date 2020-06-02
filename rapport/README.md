@@ -1,5 +1,3 @@
-
-
 # A propos
 
 ::: tip Informations
@@ -70,13 +68,11 @@ Au sein du service des Coopérations territoriales, directement rattaché à la 
 
 * **Hugo Jahnke** : Apprenti développeur web
 
-### Objectif et Fonctionnement
+### Objectif
 
 Le service SIG est chargé de mettre à disposition des outils cartographiques tels que des cartes, des jeux de données ou des applications web à destination des autres services du Conseil Départemental, des communes du département de Meurthe-et-Moselle ou du grand public.
 
 En effet, la plupart des données sont mises à disposition librement et dans plusieurs formats sur [infogeo54.fr](http://catalogue.infogeo54.fr/geonetwork/srv/fre/catalog.search?node=srv#/home).
-
-#### Objectif
 
 Les outils mis en place par le service SIG servent deux intérêts majeurs :
 
@@ -84,18 +80,16 @@ Les outils mis en place par le service SIG servent deux intérêts majeurs :
 
 * **Aide à la décision** : la visualisation des données géographiques (cartes, applications web) permet au Conseil Départemental d'optimiser la gestion du budget et des subventions.
 
-#### Fonctionnement
+### Fonctionnement
 
 De la collecte des données jusqu'à leur mise à disposition, le service SIG intervient à toutes les étapes.
 
-##### Collecte des données
+#### Collecte des données
 
 Les géomaticiens du service SIG sont en étroite collaboration avec des agents de terrain chargés de récolter des données à travers le département.
 
 Ces données sont variées et liées à différentes thématiques telles que le Cadastre, le recyclage des eaux usées ou les voies vertes par exemple.
 
-##### Traitement des données
+#### Traitement des données
 
-##### Mise à disposition des données
-
-## Bourgs-Centres
+#### Mise à disposition des données

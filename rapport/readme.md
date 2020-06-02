@@ -1,5 +1,3 @@
-# Suivi d'alternance
-
 **Entreprise** : Conseil Départemental de Meurthe-et-Moselle
 
 **Service** : Système d'Information Géographique
@@ -9,8 +7,6 @@
 **Maître d'apprentissage** : Hervé Vitoux
 
 **Tuteur académique** : Yann Boniface
-
-
 
 ## Introduction
 
@@ -44,12 +40,22 @@ Pour s'occuper au mieux des différentes thématiques dans lesquelles il est eng
 
 * **Territoires** : Infrastructure et mobilité, Appui aux territoires et environnement, Développement, Éducation.
 
-Chaque direction est elle-même divisée en services départementaux qui se focalisent sur une thématique précise (voir [l'organigrame général des services départementaux](http://meurthe-et-moselle.fr/sites/default/files/Page%20Service/PDF/Org_General202004.pdf)).
+Chaque direction est elle-même divisée en services départementaux qui se focalisent sur une thématique précise.
+
+<img title="Organigramme général des services départementaux" src="./assets/images/organigramme_general.png" alt="organigramme_general" data-align="center">
 
 ## Le service SIG
 
-Au sein du service des Coopérations territoriales, directement rattaché à la Direction du Développement, le service SIG
+Au sein du service des Coopérations territoriales, directement rattaché à la Direction du Développement, le service SIG est chargé de mettre à disposition des outils cartographiques tels que des cartes, des jeux de données ou des applications web.
+
+Sous la direction de **Mme Isabelle Arts**, le service est actuellement composé de 4 personnes :
+
+* **Hervé Vitoux** : Géomaticien et chef de projet SIG
+
+* **Ingrid Leblanc** : Géomaticienne et formatrice SIG
+
+* ****
+
+Les géom étroite collaboration avec des agents de terrain chargés de récolter des données à travers le département
 
 ## Bourgs-Centres
-
-## 

@@ -5,7 +5,8 @@ module.exports = {
         sidebar: 'auto',
         nav: [
             { text: 'A propos', link: '/' },
-            { text: 'Bourgs-Centres', link: '/bourgs-centres/' }
+            { text: 'Bourgs-Centres', link: '/bourgs-centres/' },
+            { text: 'Liens', link: '/liens/' }
         ],
         smoothScroll: true
     }

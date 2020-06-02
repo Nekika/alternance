@@ -24,7 +24,7 @@ Ce compte rendu intermédiaire me permettra de présenter l'institution, le serv
 
 Le Conseil Départemental de Meurthe-et-Moselle est l'institution administrative qui se place entre les communes du département de Meurthe-et-Moselle et la région Grand-Est.
 
-Il est composé d'une part d'une assemblée de représentants élus (46 conseillers départementaux) et d'autre part de différents services administratifs implantés dans les six territoires du département (Maison du département, maison des solidarités, services de routes...) et composés de fonctionnaires territoriaux (3000 agents, 140 métiers).
+Il est composé d'une part d'une assemblée de représentants élus (46 conseillers départementaux) et d'autre part de différents services administratifs implantés dans les six territoires du département (Maison du département, maison des solidarités, services de routes, ...) et composés de fonctionnaires territoriaux (3000 agents, 140 métiers).
 
 Bien que l'action principale soit la solidarité avec des problématiques telles que l'enfance et la famille, les personnes âgées, handicapées ou en difficulté sociale, le Conseil Départemental possède de nombreuses compétences parmi lesquelles :
 
@@ -92,4 +92,16 @@ Ces données sont variées et liées à différentes thématiques telles que le 
 
 #### Traitement des données
 
+Lorsque les données ont été récupérées, elles sont prêtes à être utilisées. Afin de les manipuler, les géomaticiens du Conseil Départemental utilisent [QGIS](https://qgis.org), un logiel libre et open source destiné à manipuler des données géospatiales.
+
+![qgis_exemple](./assets/images/qgis_exemple.png "Exemple de projet QGIS")
+
 #### Mise à disposition des données
+
+QGIS est un outil très puissant qui tend à s'améliorer constament et à proposer de nouvelles fonctionnalités plus intéressantes les unes que les autres lorsqu'il s'agit de mettre à disposition des doonées géospatiales :
+
+* **Export de couches** : il est possible d'exporter les couches d'un projet sous différent formats (GeoPackage, Shapefile, GeoJSON, ...).
+
+* **QGIS Server** : un module qui permet d'utiliser QGIS comme serveur de données géospatiales. Pour faire simple, en partant d'un projet QGIS et en s'installant sur un serveur web (Apache, nginx), ce module est capable de générer des WebServices de type WMS et WFS afin de rendre les données accessibles au sein d'une page web.
+
+Grâce à ce genre d'outils, le service SIG est capable de mettre à disposition facilement des données géospatiales, de créer des cartes ou des applications web qui consoment des WebServices générés par QGIS Server.

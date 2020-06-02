@@ -20,11 +20,11 @@ Le Conseil Départemental de Meurthe-et-Moselle est l'institution administrative
 
 Il est composé d'une part d'une assemblée de représentants élus (46 conseillers départementaux) et d'autre part de différents services administratifs implantés dans les six territoires du département (Maison du département, maison des solidarités, services de routes...) et composés de fonctionnaires territoriaux (3000 agents, 140 métiers).
 
-Bien que l'action principale soit la solidarité avec des problématiques telles que l'enfance et la famille, les personnes âgées, handicapées ou en difficulté sociales, le Conseil Départemental possède de nombreuses compétences parmis lesquelles :
+Bien que l'action principale soit la solidarité avec des problématiques telles que l'enfance et la famille, les personnes âgées, handicapées ou en difficulté sociale, le Conseil Départemental possède de nombreuses compétences parmi lesquelles :
 
 * **L'éducation** : Patrimoine des collèges et restauration scolaire.
 
-* **La culture** : médiathèque départementale, Animation socio-éducative et socio-culturelle,  restauration d'édifices conservation des musées et acquisition de collections.
+* **La culture** : médiathèque départementale, Animation socio-éducative et socio-culturelle, restauration d'édifices, conservation des musées et acquisition de collections.
 
 * **L'environnement** : eau, assainissement, gestion de l'espace, protection des espaces naturels sensibles, sentiers de randonnées.
 
@@ -32,7 +32,7 @@ Notons que certaines compétences sont partagées avec d'autres collectivités l
 
 ## Les services départementaux
 
-Pour s'occuper au mieux des différentes thématiques dans lesquelles il est engagé, le Conseil Départemental est divisié en une multitude de directions, rattachées à un des trois grands pôles :
+Pour s'occuper au mieux des différentes thématiques dans lesquelles il est engagé, le Conseil Départemental est divisée en une multitude de directions, rattachées à un des trois grands pôles :
 
 * **Ressources** : Finances, Ressources humaines, Logistique, Immobilier, Systèmes d'Information.
 
@@ -46,16 +46,46 @@ Chaque direction est elle-même divisée en services départementaux qui se foca
 
 ## Le service SIG
 
-Au sein du service des Coopérations territoriales, directement rattaché à la Direction du Développement, le service SIG est chargé de mettre à disposition des outils cartographiques tels que des cartes, des jeux de données ou des applications web.
+### Composition
 
-Sous la direction de **Mme Isabelle Arts**, le service est actuellement composé de 4 personnes :
+Au sein du service des Coopérations territoriales, directement rattaché à la Direction du Développement, et sous la responsabilité de **Mme Isabelle Arts**, le service SIG est actuellement composé de 4 personnes :
 
 * **Hervé Vitoux** : Géomaticien et chef de projet SIG
 
 * **Ingrid Leblanc** : Géomaticienne et formatrice SIG
 
-* ****
+* **Mohammed Boujjia** : Géomaticien et administrateur SIG
 
-Les géom étroite collaboration avec des agents de terrain chargés de récolter des données à travers le département
+* **Hugo Jahnke** : Apprenti développeur web
+
+### Objectif et Fonctionnement
+
+Le service SIG est chargé de mettre à disposition des outils cartographiques tels que des cartes, des jeux de données ou des applications web à destination des autres services du Conseil Départemental, des communes du département de Meurthe-et-Moselle ou du grand public.
+
+En effet, la plupart des données sont mises à disposition librement et dans plusieurs formats sur [infogeo54.fr](http://catalogue.infogeo54.fr/geonetwork/srv/fre/catalog.search?node=srv#/home).
+
+#### Objectif
+
+Les outils mis en place par le service SIG servent deux intérêts majeurs :
+
+* **Facilitation de la transmission des données** : grâce aux applications web mis à la disposition des collectivités, la transmission de données vers le Conseil Départemental est facilitée et plus rapide.
+
+* **Aide à la décision** : la visualisation des données géographiques (cartes, applications web) permet au Conseil Départemental d'optimiser la gestion du budget et des subventions.
+
+#### Fonctionnement
+
+De la collecte des données jusqu'à leur mise à disposition, le service SIG intervient à toutes les étapes.
+
+##### Collecte des données
+
+Les géomaticiens du service SIG sont en étroite collaboration avec des agents de terrain chargés de récolter des données à travers le département.
+
+Ces données sont variées et liées à différentes thématiques telles que le Cadastre, le recyclage des eaux usées ou les voies vertes par exemple.
+
+##### Traitement des données
+
+
+
+##### Mise à disposition des données
 
 ## Bourgs-Centres

@@ -1,3 +1,9 @@
+
+
+# A propos
+
+::: tip Informations
+
 **Entreprise** : Conseil Départemental de Meurthe-et-Moselle
 
 **Service** : Système d'Information Géographique
@@ -7,6 +13,8 @@
 **Maître d'apprentissage** : Hervé Vitoux
 
 **Tuteur académique** : Yann Boniface
+
+:::
 
 ## Introduction
 
@@ -28,7 +36,11 @@ Bien que l'action principale soit la solidarité avec des problématiques telles
 
 * **L'environnement** : eau, assainissement, gestion de l'espace, protection des espaces naturels sensibles, sentiers de randonnées.
 
-Notons que certaines compétences sont partagées avec d'autres collectivités locales ou avec l'État.
+::: warning Note
+
+Certaines compétences sont partagées avec d'autres collectivités locales ou avec l'État.
+
+:::
 
 ## Les services départementaux
 
@@ -83,8 +95,6 @@ Les géomaticiens du service SIG sont en étroite collaboration avec des agents 
 Ces données sont variées et liées à différentes thématiques telles que le Cadastre, le recyclage des eaux usées ou les voies vertes par exemple.
 
 ##### Traitement des données
-
-
 
 ##### Mise à disposition des données
 

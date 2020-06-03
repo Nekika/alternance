@@ -1,5 +1,5 @@
 ---
-prev: /projets-annexes/
+prev: /projets-annexes/smc
 
 ---
 

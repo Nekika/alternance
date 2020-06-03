@@ -1,3 +1,8 @@
+---
+next: /bourgs-centres/
+
+---
+
 # A propos
 
 ::: tip Informations

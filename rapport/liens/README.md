@@ -1,3 +1,9 @@
+---
+
+prev: /bourgs-centres/
+
+---
+
 # Liens
 
 ## Sources
@@ -13,5 +19,3 @@
 * **Université de Lorraine** : [https://www.univ-lorraine.fr](https://univ-lorraine.fr)
 
 * **IUT Nancy-Charlemagne** : [https://iut-charlemagne.univ-lorraine.fr/](https://iut-charlemagne.univ-lorraine.fr/)
-
-

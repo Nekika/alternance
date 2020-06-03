@@ -110,3 +110,9 @@ QGIS est un outil très puissant qui tend à s'améliorer constament et à propo
 * **QGIS Server** : un module qui permet d'utiliser QGIS comme serveur de données géospatiales. Pour faire simple, en partant d'un projet QGIS et en s'installant sur un serveur web (Apache, nginx), ce module est capable de générer des WebServices de type WMS et WFS afin de rendre les données accessibles au sein d'une page web.
 
 Grâce à ce genre d'outils, le service SIG est capable de mettre à disposition facilement des données géospatiales, de créer des cartes ou des applications web qui consoment des WebServices générés par QGIS Server.
+
+## Mes missions
+
+Au cours de cette année en tant qu'apprenti au sein du service SIG, j'ai eu l'opportunité de travailler sur plusieurs projets.
+
+Ainsi, durant les premiers mois, j'ai pu découvrir le mode de fonctionnement du service, les outils utilisés ([QGIS](https://qgis.org), [PostGIS](https://postgis.net), [Lizmap](https://3liz.com/lizmap.html)) et effectuer des petits projets (cf. [Projets annexes](/projets-annexes/)) en attendant le démarrage du projet [Bourgs-Centres](/bourgs-centres/).

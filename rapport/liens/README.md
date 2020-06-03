@@ -1,6 +1,5 @@
 ---
-
-prev: /bourgs-centres/
+prev: /projets-annexes/
 
 ---
 

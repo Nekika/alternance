@@ -6,6 +6,7 @@ module.exports = {
         nav: [
             { text: 'A propos', link: '/' },
             { text: 'Bourgs-Centres', link: '/bourgs-centres/' },
+            { text: 'Projets annexes', link: '/projets-annexes/' },
             { text: 'Liens', link: '/liens/' }
         ],
         smoothScroll: true

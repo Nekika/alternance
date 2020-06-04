@@ -13,9 +13,9 @@ next: ./smc
 
 **Poblème** : Cette modal appraît à chaque lancement d'application sans qu'il n'y est aucun moyen de l'en empêcher.
 
-**Objectifs** : Analyser le code de la modal et ajouter un moyen permettant à l'utilisateur d'empêcher la modal d'appraître lors des utilisations futures.
+**Objectif** : Analyser le code de la modal et ajouter un moyen permettant à l'utilisateur d'empêcher la modal d'appraître lors des utilisations futures.
 
-**Technologies utilisées** : JavaScript
+**Technologie utilisée** : JavaScript
 
 :::
 
@@ -205,7 +205,6 @@ function displayModal() {
         modal.modal('show')
     }
 }
-
 ```
 
 Ainsi, il suffit de stocker un ensemble clé/valeur dans le `localStorage` lorsque l'utilisateur décide de ne plus afficher la modal :
@@ -252,5 +251,3 @@ Ce premier projet fut une très bonne entrée en matière car il m'a permis de d
 * **Utilisation d'outils existants** : cette compétence va de paire avec la précédente puisque la bonne lecture des documentations m'a permis de réutiliser des outils existants et de ne pas "réinventer la roue".
 
 * **Rejoindre un projet en cours** : en travaillant sur un projet existant, j'ai pu me rendre compte des capacités requises pour rejoindre un projet en cours, notament la prise en main des outils et manières de travailler de l'équipe.
-
-

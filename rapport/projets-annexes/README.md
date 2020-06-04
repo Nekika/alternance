@@ -19,5 +19,3 @@ Ce premier projet m'a permis de prendre en main et customiser [Lizmap](https://3
 ## [SMC (Sélection Multi Couches)](/projets-annexes/smc)
 
 J'ai été chargé de créer un plugin pour [QGIS](https://qgis.org) permettant de sélectionner rapidement toutes les objets visibles dans l'interface.
-
-

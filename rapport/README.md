@@ -113,6 +113,6 @@ Grâce à ce genre d'outils, le service SIG est capable de mettre à disposition
 
 ## Mes missions
 
-Au cours de cette année en tant qu'apprenti au sein du service SIG, j'ai eu l'opportunité de travailler sur plusieurs projets.
+Au cours de cette année en tant qu'apprenti au sein du service SIG, j'ai eu l'occasion de travailler sur plusieurs projets.
 
-Ainsi, durant les premiers mois, j'ai pu découvrir le mode de fonctionnement du service, les outils utilisés ([QGIS](https://qgis.org), [PostGIS](https://postgis.net), [Lizmap](https://3liz.com/lizmap.html)) et effectuer des petits projets (cf. [Projets annexes](/projets-annexes/)) en attendant le démarrage du projet [Bourgs-Centres](/bourgs-centres/).
+Ainsi, durant les premiers mois, j'ai pu découvrir le mode de fonctionnement du service, les outils utilisés ([QGIS](https://qgis.org), [PostGIS](https://postgis.net), [Lizmap](https://3liz.com/lizmap.html)) et travailler des petits projets (cf. [Projets annexes](/projets-annexes/)) en attendant le démarrage du projet [Bourgs-Centres](/bourgs-centres/).

@@ -37,7 +37,7 @@ Lizmap propose un moyen de customiser l'interface des applications web qu'il gé
 
 En effet, en intégrant des fichiers JavaScript ou CSS dans l'arborescence d'un projet, il est possible de modifier le comportement ou l'apparence des applications qu'il contient :
 
-```bash
+```shell
 # Exemple de structure de fichiers
 
 -- mon_super_projet

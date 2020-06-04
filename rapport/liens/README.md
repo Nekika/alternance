@@ -17,4 +17,10 @@ prev: /projets-annexes/smc
 
 * **Université de Lorraine** : [https://www.univ-lorraine.fr](https://univ-lorraine.fr)
 
-* **IUT Nancy-Charlemagne** : [https://iut-charlemagne.univ-lorraine.fr/](https://iut-charlemagne.univ-lorraine.fr/)
+* **IUT Nancy-Charlemagne** : [https://www.iut-charlemagne.univ-lorraine.fr/](https://www.iut-charlemagne.univ-lorraine.fr/)
+
+## Contacts
+
+* **Personnel** : <a href="mailto:contact@hugojahnke.fr">contact@hugojahnke.fr</a>
+
+* **Universitaire** : <a href="mailto:jahnke1u@etu.univ-lorraine.fr">jahnke1u@etu.univ-lorraine.fr</a>

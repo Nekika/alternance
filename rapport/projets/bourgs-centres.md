@@ -1,8 +1,6 @@
 ---
-prev: /
-
-next: /projets-annexes/
-
+prev: /projets/
+next: /projets/modal
 ---
 
 # Bourgs-Centres

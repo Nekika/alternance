@@ -4,10 +4,11 @@ module.exports = {
     themeConfig: {
         sidebar: 'auto',
         nav: [
-            { text: 'A propos', link: '/' },
-            { text: 'Bourgs-Centres', link: '/bourgs-centres/' },
-            { text: 'Projets annexes', link: '/projets-annexes/' },
-            { text: 'Liens', link: '/liens/' }
+            { text: 'Accueil', link: '/' },
+            { text: 'Présentation', link: '/presentation' },
+            { text: 'Prérequis', link: '/prerequis/' },
+            { text: 'Projets', link: '/projets/' },
+            { text: 'Liens', link: '/liens' }
         ],
         smoothScroll: true
     }

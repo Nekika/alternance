@@ -1,6 +1,5 @@
 ---
-prev: /projets-annexes/smc
-
+prev: /projets/smc
 ---
 
 # Liens

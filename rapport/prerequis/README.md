@@ -21,3 +21,19 @@ La consultation de ces modules n'est donc pas obligatoire mais elle est fortemen
 * Vous souhaitez découvrir le fonctionnement de QGIS Server et PostGIS.
 
 * Vous êtes effrayé par les termes *emprise* ou *couche vectorielle*.
+
+## Modules
+
+Il est conseillé de consulter les modules dans l'ordre puisque certaines notions d'un modules dépendent de celles abordées dans un précédent module.
+
+### [QGIS](/prerequis/qgis)
+
+**QGIS** un **logiciel SIG libre, open-source et multiplatforme** conçu pour permettre à un utilisateur de manipuler des **données géospatiales**.
+
+### [QGIS Server](/prerequis/qgis-server)
+
+**QGIS Server** est un module qui permet d'utiliser QGIS comme **serveur de données géospatiales**.
+
+### [Lizmap](/prerequis/lizmap)
+
+Conçu par **3Liz**, une société française spécialisée dans les services autour des logiciels libres SIG, **Lizmap** est **logiciel open-source** se présentant comme un **plugin QGIS** permettant de créer des **applications Web cartographiques**.

@@ -5,48 +5,66 @@ next: /prerequis/lizmap
 
 # QGIS
 
-[QGIS](https://qgis.org) est un logiciel libre et open source destiné à manipuler des données géospatiales.
+[QGIS](https://qgis.org) est un **logiciel SIG libre, open source et multiplatforme** destiné à manipuler des **données géospatiales**.
 
-<img src="../assets/images/qgis_exemple.png" title="Exemple de projet QGIS" alt="qgis_exemple" data-align="center">
+Il est notamment intégré à la liste des logiciels libres préconisés par l’État français dans le cadre de la modernisation globale de ses systèmes d’informations.
+
+<img src="../assets/images/qgis_exemple.png" title="Exemple de projet QGIS" alt="qgisexemple" data-align="center">
+
+## Notions
+
+En tant que logiciel SIG, son utilisation requiert l'assimilation de certaines notions propres à l'univers de la cartographie.
+
+La conaissance de ces notions permettra d'aborder sereinement la présentations des projets.
+
+### Canvas
+
+Le canvas est l'élément de l'interface utilisateur où sont affichées les représentations des données.
 
 ### Couches
 
-Dans un QGIS (et généralement dans tous les SIG), les données sont organisées sous formes de couches que l'on peut venir superposer.
+Dans QGIS (et généralement dans tous les SIG), les données sont organisées sous forme de couches superposables.
 
-Une couche possède un type, qui définit la nature des entités qui la compose. Les principaux types sont :
+Une couche possède un type qui définit la nature des entités qui la compose. 
 
-* **Vectoriel** : les données sont réprésentées sous forme géométriques (points, lignes, polygones).
+Les principaux types sont :
 
-* **Raster** : les données raster sont comme des images (voir la [documentation](https://docs.qgis.org/3.10/fr/docs/training_manual/rasters/data_manipulation.html)) et peuvent par exemple servir de fond de carte.
+- **Vectoriel** : les données sont réprésentées sous forme géométriques (points, lignes, polygones).
+
+- **Raster** : les données raster sont comme des images et peuvent par exemple servir de fond de carte (voir la [documentation](https://docs.qgis.org/3.10/fr/docs/training_manual/rasters/data_manipulation.html)).
 
 ### Emprise
 
-Le terme "emprise" peut être défini comme le périmètre englobant tous les éléments visibles.
+Ce terme peut être défini comme le périmètre englobant tous les éléments visibles.
 
-Dans QGIS, l'emprise n'est ni plus ni moins que le canvas sur lequel les données sont représentées. Elle est entièrement réglable par l'utilisateur par le biais de l'échelle.
+Dans QGIS, ce qui définit l'emprise, ce n'est ni plus ni moins que le canvas. 
+
+Elle est entièrement réglable par l'utilisateur, via la valeur de l'échelle ou en zoomant.
 
 En prenant exemple sur la photo plus haut, l'emprise est réglée de manière à ce que le département de Meurthe-et-Moselle soit entièrement englobé.
 
-### Plugins
+## Plugins
 
-L'aspect open source de QGIS le rend totalement customisable, notamment en réutilisant [son API](https://qgis.org/api/) ou en développant des plugins qui permettent d'ajouter de nouvelles fonctionnalités.
+L'aspect open source de QGIS le rend totalement customisable, notamment en développant des plugins qui permettent d'ajouter de nouvelles fonctionnalités.
 
-::: warning Note
+Le logiciel propose notamment une interface permettant de gérer les extentions installées ou d'en télécharger de nouvelles depuis un dépôt officiel :
 
-QGIS étant principalement écrit en C++ et Python, il existe donc une [version Python de l'API](https://qgis.org/pyqgis/3.0/).
-
-:::
-
-Les plugins font partie intégrante de l'écosystème QGIS. Le logiciel propose notamment une interface permettant de gérer les extentions installées ou d'en télécharger de nouvelles depuis un dépôt officiel :
-
-<img src="../assets/images/qgis_extensions.png" title="L'interface de gestion des extensions dans QGIS" alt="qgis_extensions" data-align="center">
+<img src="../assets/images/qgis_extensions.png" title="L'interface de gestion des extensions dans QGIS" alt="qgisextensions" data-align="center">
 
 Il arrive que certains plugins développés par la communauté rencontrent un tel succès qu'ils viennent à être intégrés nativement dans QGIS.
 
 ::: warning Note
 
-**Lizmap** (cf. [Modal](/projets-annexes/modal#lizmap)) était à l'origine un plugin développé sous la version 2 de QGIS. 
+**Lizmap** (cf. [présentation de Lizmap](/prerequis/lizmap)) était à l'origine un plugin développé sous la version 2 de QGIS.
 
 Lors de la release de la version 3, il fut inclu dans le logiciel en tant qu'extension native.
 
 :::
+
+## Formats des données
+
+La force de QGIS est qu'il permet de travailler avec des données provenant de sources variées.
+
+Ainsi, il est possible d'importer des données depuis des fichiers (*ShapeFile, GeoPackage, GeoJSON, ..*.) ou de se connecter à une base de donnée capable de stocker des données géospatiales (cf. [présentation de QGIS Server](/prerequis/qgis-server#postgis)).
+
+Il est également possible de convertir les données d'un format à l'autre.

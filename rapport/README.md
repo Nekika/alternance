@@ -16,5 +16,3 @@ La partie [Prérequis](/prerequis) est destinée à présenter des outils et exp
 Sa consultation n'est donc pas obligatoire bien qu'elle soit fortement conseillée avant d'entreprendre la lecture de la partie [Projets](/projets/).
 
 Enfin, dans la partie [Liens](/liens), on peut retrouver des liens vers les sources ou des informations de contact.
-
-Bonne lecture.

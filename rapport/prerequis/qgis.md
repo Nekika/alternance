@@ -65,9 +65,7 @@ Il arrive que certains plugins développés par la communauté rencontrent un te
 
 ::: warning Note
 
-**Lizmap** (cf. [présentation de Lizmap](/prerequis/lizmap)) était à l'origine un plugin développé sous la **version 2** de QGIS.
-
-Lors de la release de la **version 3**, il fut inclu dans le logiciel en tant qu'**extension native**.
+**DB Manager** une fonctionnalité native permettant de connecter QGIS aux bases de données était à l'origine une extensions développée par la communauté.
 
 :::
 

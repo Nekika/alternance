@@ -6,13 +6,17 @@ title: SMC
 
 # SMC (Sélection Multi Couches)
 
+## Introduction
+
+J'ai été chargé de créer un plugin pour **QGIS** permettant de sélectionner instantanément toutes les entités visibles dans l'interface.
+
 ::: tip Informations
 
 **Contexte** : Le logiciel QGIS est utilisé par les géomaticiens et les agents de terrain chargés de collecter des données à travers le département de Meurthe-et-Moselle.
 
-**Problème** : N'ayant pas de connexion internet sur le terrain, les agents n'ont donc pas accès aux bases de données. Il sont alors contraints de sauvegader les données sur leur ordinateur portable avant de partir. Cette tâche est fastidieuse puisqu'ils doivent sélectionner manuellement chaque entité qu'ils souhaient sauvegarder en cliquant dessus. Cela devient très pénible pour des gros projets.
+**Problème** : N'ayant pas de connexion internet sur le terrain, les agents n'ont donc pas accès aux bases de données. Il sont alors contraints de sauvegader les données sur leur ordinateur portable avant de partir. Cette tâche est fastidieuse puisqu'ils doivent sélectionner manuellement chaque entité qu'ils souhaient sauvegarder en cliquant dessus. Cela devient très pénible pour des projets de grande envergure.
 
-**Objectif** : Développer un plugin QGIS permettant la sélection de toutes les entitées présentes dans une emprise définie par l'utilisateur.
+**Objectif** : Développer un plugin QGIS permettant la sélection de toutes les entités présentes dans l'emprise définie par l'utilisateur.
 
 **Technologie utilisée** : Python
 
@@ -20,16 +24,16 @@ title: SMC
 
 ## Analyse
 
-Ma mission consistant à développer un plugin, j'ai donc commencé par prendre le temps de chercher des informations et de lire la [documentation](https://docs.qgis.org/3.10/fr/docs/index.html) avant d'analyser le besoin.
+Ma mission consistant à **développer un plugin**, j'ai donc commencé par prendre le temps de **chercher des informations** et de lire la [documentation](https://docs.qgis.org/3.10/fr/docs/index.html) avant **d'analyser le besoin**.
 
 ### Intégration d'un plugin
 
-Afin d'intégrer un plugin local, QGIS nous propose de placer notre code dans un répertoire qu'il viendra scanner au démarrage.
+Afin d'intégrer un plugin local, QGIS nous propose de placer notre code dans un répertoire qu'il viendra scanner au démarrage :
 
 ```shell
 # Exemple de structure de fichiers
 
--- $QGIS_DIRECTORY
+-- $REPERTOIRE_QGIS
   |-- profiles
     |-- default
       |-- python
@@ -41,28 +45,28 @@ Afin d'intégrer un plugin local, QGIS nous propose de placer notre code dans un
 
 * `profiles` : le répertoire qui stocke les différents profils utilisateurs.
 
-* `profiles/*/python/plugins` : le sous-répertoire dans lequel on peut retrouver le code source des extensions.
+* `profiles/*/python/plugins` : le sous-répertoire scanné par QGIS, dans lequel on peut retrouver le code source des extensions.
 
 ::: warning Note
 
-Le répertoire `profiles/default` permet de définir des configurations qui seront appliqués à l'utilisateur par défaut ET à tous les utilisateurs.
+Le répertoire `profiles/default` permet de définir des configurations qui seront appliqués à l'utilisateur par défaut **ET** à tous les utilisateurs.
 
-Ainsi, dans le répertoire `profiles/default/python/plugins` on pourra retrouver des extensions disponibles pour tous les utilisateurs tandis que le répertoire `profiles/mon_profil/python/plugins` contiendra des extentions uniquement destinées à l'utilisateur *mon_profil*.
+Ainsi, dans le répertoire `profiles/default/python/plugins` on pourra retrouver des extensions disponibles pour tous les utilisateurs tandis que le répertoire `profiles/mon_profil/python/plugins` contiendra des extentions destinées à l'utilisateur *mon_profil* **uniquement**.
 
 :::
 
 ### Développement d'un plugin
 
-Pour le développement de plugins, QGIS encourage l'utilisation de Python plutôt que C++.
+Pour le développement de plugins, QGIS encourage l'utilisation de **Python** plutôt que C++.
 
-Ainsi, sur la documentation officielle de QGIS, on peut retrouver le [PyQGIS Developer Cookbook](https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/index.html) qui explique en profondeur la manière de créer un plugin et d'utiliser [l'API Python](https://qgis.org/pyqgis/3.0/).
+Ainsi, sur la documentation officielle de QGIS, on peut retrouver le [PyQGIS Developer Cookbook](https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/index.html) qui explique de manière détaillée la marche à suivre pour créer un plugin en utilisant [l'API Python](https://qgis.org/pyqgis/3.0/).
 
 #### Structure d'un plugin
 
 ```shell
 # Structure minimale
 
--- $QGIS_PLUGINS_DIRECTORY
+-- $REPERTOIRE_QGIS_PLUGINS
   |-- mon_super_plugin
     |-- __init__.py
     |-- form.ui
@@ -87,14 +91,14 @@ Ainsi, sur la documentation officielle de QGIS, on peut retrouver le [PyQGIS Dev
 
 * `resources.qrc` : un fichier au format XML créé par [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html) et contenant des informations relatives à l'interface utilisateur.
 
-Ces fichiers composent le squelette de base d'un plugin QGIS.
+Ces fichiers composent le **squelette de base** d'un plugin QGIS.
 
-Pour un plugin d'une plus grande ampleur il est possible de se retrouver avec des architectures telles que celle-ci : 
+Pour un plugin d'une **plus grande ampleur** il est possible de se retrouver avec des architectures telles que celle-ci : 
 
 ```shell
 # Structure complexe
 
--- $QGIS_PLUGINS_DIRECTORY
+-- $REPERTOIRE_QGIS_PLUGINS
   |-- mon_super_plugin
     |-- help
       |-- build
@@ -143,15 +147,15 @@ Pour un plugin d'une plus grande ampleur il est possible de se retrouver avec de
       |-- utilities.py
 ```
 
-Dans notre cas, une structure simple suffira puisque le plugin ne contiendra que quelques instructions.
+Dans notre cas, une **structure simple** suffira puisque le plugin ne contiendra que **quelques instructions**.
 
 ### Besoin
 
-Il faut permettre à l'utilisateur de gagner du temps en obtenant immédiatement une sélection de toutes les entités présentes dans l'emprise, tout en effectuant le moins d'action possible.
+Il faut permettre à l'utilisateur de **gagner du temps** en obtenant **immédiatement** une sélection de **toutes les entités** présentes dans l'emprise, tout en effectuant **le moins d'action possible**.
 
 ::: warning Note
 
-Les utilisateurs finaux sélectionnent les entités de toutes les couches du projet.
+Les utilisateurs finaux sélectionnent les entités de toutes les couches du projet, sauf une (la couche *Communes*).
 
 Il n'était alors pas nécessaire de fournir une interface utilisateur permettant de sélectionner les couches sur lesquelles effectuer la sélection.
 
@@ -159,16 +163,16 @@ Il n'était alors pas nécessaire de fournir une interface utilisateur permettan
 
 ## Solution proposée
 
-L'idée est de fournir un outil capable d'effectuer la sélection en un seul clic.
+L'idée est de fournir un outil capable d'effectuer la sélection **en un seul clic** :
 
-*Insérer la démo en GIF*
+<img src="../assets/images/smc_preview.gif" title="" alt="smc_preview" data-align="center">
 
 ### Structure
 
-L'architecture est très simplifiée puisque d'une part il n'y a que quelques instructions à fournir, et d'autre part il n'y a pas besoin d'interface utilisateur :
+L'architecture est très **simplifiée** puisque d'une part il n'y a que quelques instructions à fournir, et d'autre part il n'y a pas besoin d'interface utilisateur :
 
 ```shell
--- $QGIS_PLUGINS_DIRECTORY
+-- $REPERTOIRE_QGIS_PLUGINS
   |-- SMC
     |-- __init.py__
     |-- icon.png
@@ -185,17 +189,17 @@ On remarque tout de même la présence de nouveaux fichiers :
 
 * `icon.png` : l'icone qui représente le plugin dans l'interface de QGIS.
 
-* `pb_tool.cfg` : un outil permettant de compiler le plugin.
+* `pb_tool.cfg` : un outil permettant de compiler le plugin, voir [Plugin Builder Tool](http://g-sherman.github.io/plugin_build_tool/).
 
 * `tools.py` : des fonctions dont la présence au sein du coeur du plugin n'était pas pertinente.
 
 ### Code
 
-L'utilisation de [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS rend le code simple à lire et à comprendre même pour quelqu'un n'ayant jamais manipuler Python. Je vais donc me permettre de détailler le fonctionnement du plugin.
+L'utilisation de [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS rend le code **simple à lire et à comprendre** même pour quelqu'un n'ayant jamais manipuler Python. Je vais donc me permettre de détailler le fonctionnement du plugin.
 
-Le fichier principal ( `smc.py` ) est une classe qui doit implémenter des méthodes définies par l'API.
+Le **fichier principal** ( `smc.py` ) est une classe qui doit implémenter des **méthodes définies par l'API**.
 
-Ces méthodes servent à configurer le plugin lors du démarrage de QGIS. Elles sont donc indispensables.
+Ces méthodes servent à **configurer** le plugin lors du démarrage de QGIS. Elles sont donc **indispensables**.
 
 ::: warning Note
 
@@ -205,53 +209,50 @@ Pour plus de détail sur ces méthodes ou sur le fonctionnement des plugins, se 
 
 :::
 
-Parmi les méthodes indispensables, on peut retrouver `run()`. 
+Parmi les méthodes **indispensables**, on peut retrouver `run()`. 
 
-C'est elle qui sera appelée lorsque l'utilisateur souhaite se servir du plugin et c'est donc à l'intérieur que l'on va indiquer les actions à effectuer :
+C'est elle qui sera appelée lorsque l'utilisateur souhaite se servir du plugin, c'est donc à l'intérieur que l'on va indiquer les **actions à effectuer** :
 
 ```python
 def run(self):
-  """Run method that performs all the real work"""
   layers = get_all_vectorLayers()
   extent = self.get_extent()
   select_features_in_area(layers, extent)
 ```
 
-On remarque que cette méthode fait appel à 2 fonctions et une méthode :
+On remarque que cette méthode fait appel à **2 fonctions** et **une autre méthode** :
 
 * **`get_all_vectorLayers()`**
 
-Cette fonction permet de récupérer la liste des couches vectorielles du projet.
-
-En effet, c'est sur celles-ci que sont représentées les entités à sélectionner.
+Cette fonction permet de **récupérer la liste des couches vectorielles** du projet puisque c'est sur celles-ci que sont représentées les entités à sélectionner :
 
 ```python
 def get_all_vectorLayers():
     res = []
     layers = QgsProject.instance().mapLayers().values()
     for layer in layers:
-        if layer.type() == 0:
+        if layer.type() == 0 and layer.name() != "Communes":
             res.append(layer)
     return res
 ```
 
-En se réferrant à la classe [QgsMapLayer](https://qgis.org/pyqgis/master/core/QgsMapLayer.html), on découvre que la méthode `type()` nous offre le moyen de connaître le type de la couche :
+En se référant à la classe [QgsMapLayer](https://qgis.org/pyqgis/master/core/QgsMapLayer.html), on découvre que la méthode `type()` nous offre le moyen de **connaître le type de la couche** :
 
-**VectorLayer** : 0
+* **VectorLayer** : 0
 
-**RasterLayer** : 1
+* **RasterLayer** : 1
 
-**PluginLayer** : 2
+* **PluginLayer** : 2
 
-**MeshLayer** : 3
+* **MeshLayer** : 3
 
-**VectorTileLayer** : 4
+* **VectorTileLayer** : 4
 
-La condition `if layer.type() == 0` permet de s'assuer que la couche traitée est de type vectoriel.
+La condition `if layer.type() == 0 and layer.name() != "Communes":` permet donc de s'assurer d'une part que la couche traitée est bel et bien de **type vectoriel**, et d'autre par que la couche traitée n'est pas la couche *Communes*.
 
 * **`get_extent()`**
 
-C'est la méthode qui va permettre de récupérer les coordonnées de l'emprise réglée par l'utilisateur.
+C'est la méthode qui va permettre de **récupérer les coordonnées de l'emprise** réglée par l'utilisateur :
 
 ```python
 def get_extent(self):
@@ -260,13 +261,11 @@ def get_extent(self):
   return extent
 ```
 
-La méthode se contente de récupérer l'instance de [MapCanvas](https://qgis.org/pyqgis/master/gui/QgsMapCanvas.html) et d'utiliser la méthode `extent()` pour pouvoir récupérer les coordonées de l'emprise.
+La méthode se contente de **récupérer l'instance de [MapCanvas](https://qgis.org/pyqgis/master/gui/QgsMapCanvas.html)** et d'utiliser la méthode `extent()` pour pouvoir **récupérer les coordonées** de l'emprise.
 
 * **`select_features_in_area()`**
 
-C'est la fonction qui va se charger d'effectuer la sélection de toutes les entités présentes dans l'emprise.
-
-En effet, les tâches effectuées en amont ont permis de récupérer des données qui sont nécessaires pour pouvoir répondre au besoin. 
+Les tâches effectuées en amont ayant permis de récupérer des données qui sont nécessaires pour pouvoir répondre au besoin, cette dernière fonction va se charger **d'effectuer la sélection** de toutes les entités présentes dans l'emprise :
 
 ```python
 def select_features_in_area(layers, area):
@@ -274,22 +273,20 @@ def select_features_in_area(layers, area):
     layer.selectByRect(area)
 ```
 
-Cette fonction très simple fait appel à la méthode `selectedByRect` de la classe [QgsVectorLayer](https://qgis.org/pyqgis/master/core/QgsVectorLayer.html#qgis.core.QgsVectorLayer.selectByRect) qui permet, à partir d'une couche vectorielle, de sélectionner toutes les entités contenues au sein d'un rectangle.
+Cette fonction très simple fait appel à la méthode `selectByRect` de la classe [QgsVectorLayer](https://qgis.org/pyqgis/master/core/QgsVectorLayer.html#qgis.core.QgsVectorLayer.selectByRect) et elle permet, à partir d'une couche vectorielle, de **sélectionner toutes les entités contenues au sein d'un rectangle**.
 
-Dans notre cas, le rectangle n'est autre que l'emprise réglée par l'utilisateur.
+Dans notre cas, le rectangle n'est autre que **l'emprise** réglée par l'utilisateur.
 
 ## Conclusion
 
-Grâce à [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS, j'ai été en mesure de développer un plugin simple qui répond entièrement au besoin défini par les utilisateurs.
+Grâce à [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS, j'ai été en mesure de développer un plugin simple qui **répond entièrement** au besoin défini par les utilisateurs.
 
-Cependant, bien que le résultat final tienne sur une dizaine de lignes, le début du développement fût difficile.
+Cependant, bien que le résultat final tienne sur une dizaine de lignes, le début du développement s'avéra difficile.
 
-En effet, j'ai eu du mal à prendre l'API en main car je n'avais encore jamais eu l'occasion de travailler sur un projet d'une telle envergure.
+En effet, j'ai eu du mal à prendre l'API en main car je n'avais encore jamais eu l'occasion de travailler sur un projet de l'envergure de QGIS.
 
-J'ai donc commencé par produire du code qui se trouva être une mauvaise réecriture d'outils proposés directement par l'API.
+J'ai donc commencé par produire du code qui se trouva être une **mauvaise réecriture** d'outils proposés directement par l'API.
 
-En voyant que je me dirigeais vers un code assez compliqué à lire et manipuler, j'ai décidé de prendre du temps pour lire la documentation de l'API.
+En voyant que je me dirigeais vers un code assez **compliqué à lire et manipuler**, j'ai décidé de prendre du temps pour **analyser la documentation** de l'API. Par chance, elle se trouve être de bonne qualité, ce qui m'a permis d'arriver au résultat présenté.
 
-Par chance, la [documentation](https://qgis.org/pyqgis/master/index.html) se trouve être de bonne qualité, ce qui m'a permis d'arriver au résultat présenté.
-
-Ce projet m'aura appris à appréhender un projet de grande envergure et m'aura permis de gagner en rapidité quant à la recherche d'informations dans une documentation complexe.
+Ce projet m'aura appris à **appréhender un projet de grande envergure** et m'aura permis de gagner en rapidité quant à la **recherche d'informations** dans une documentation complexe.

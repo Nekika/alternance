@@ -5,25 +5,31 @@ next: /projets/smc
 
 # Modal
 
+## Introduction
+
+Ce premier projet m'a permis de prendre en main et customiser une application **Lizmap** afin de permettre à l'utilisateur de gérer le comportement d'une modal d'aide s'affichant au lancement de l'application.
+
 ::: tip Informations
 
-**Contexte** : Les applications web proposées par le service SIG sont souvent destinées à des utilisateurs novices. Pour les aider, une modal explicative apparaît au lancement des applications.
+**Contexte** : Les applications Web proposées par le service SIG sont souvent destinées à des utilisateurs novices. Pour les aider, une modal explicative apparaît au lancement des applications.
 
 **Poblème** : Cette modal appraît à chaque lancement d'application sans qu'il n'y est aucun moyen de l'en empêcher.
 
-**Objectif** : Analyser le code de la modal et ajouter un moyen permettant à l'utilisateur d'empêcher la modal d'appraître lors des utilisations futures.
+**Objectif** : Revoir le code de la modal et ajouter un moyen permettant à l'utilisateur d'empêcher son apparition lors des utilisations futures.
 
 **Technologie utilisée** : JavaScript
 
 :::
 
+<img src="../assets/images/modal_old_preview.png" title="Modal d'origine" alt="modal_old_preview" data-align="center">
+
 ## Analyse
 
 ### Code
 
-Après avoir consulté les fichier liés à la modal, j'ai remarqué que je pouvais apporter quelques modifications :
+Après avoir consulté les fichiers liés à la modal, j'ai remarqué que je pouvais apporter quelques modifications :
 
-- **Mise à jour** : le code était écrit selon les anciens standards d'ECMAScript, j'ai donc utilisé des fonctionnalités plus récentes afin d'améliorer la qualité du code (let/const au lieu de var, utilisation des backquotes).
+- **Mise à jour** : le code était écrit selon les anciens standards d'[ECMAScript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Language_Resources), j'ai donc utilisé des fonctionnalités plus récentes afin d'améliorer la qualité du code (let/const au lieu de var, utilisation des backquotes, ...).
 
 - **Bootstrap** : le framework étant directement intégré à Lizmap, il n'était pas nécessaire de créer un fichier CSS pour apporter du style à la modal.
 
@@ -35,7 +41,7 @@ Afin d'empêcher la modal de s'afficher lorsque l'utilisateur le décide, il ét
 
 - **Interaction** : créer un moyen permettant à l'utilisateur de désactiver l'affichage de la modal au lancement de l'application.
 
-- **Sauvegarde du choix** : il faut que cette information soit stockée quelque part afin d'être consultée au lancement de l'application.
+- **Sauvegarde du choix** : le choix de l'utilisateur doit être stocké quelque part afin d'être consultée au lancement de l'application.
 
 #### Interaction
 
@@ -57,15 +63,13 @@ Plusieurs moyens étaient alors envisageables :
 
 ## Solution proposée
 
-Voici la solution que j'ai proposé pour régler le problème de la modal.
-
 En gardant le contenu, la disposition et le style d'origine de la modal, j'ai revu son intégration au sein de l'application.
 
-<img src="../assets/images/modal_preview.png" title="Modal" alt="modal_preview" data-align="center">
+<img src="../assets/images/modal_new_preview.png" title="Modal actuelle" alt="modal_new_preview" data-align="center">
 
 ::: warning Note
 
-Tout le code qui suit est écrit au sein d'un seul et même fichier JavaScript, placé dans le répertoire adequat du projet Lizmap
+Tout le code qui suit est écrit au sein d'un seul et même fichier JavaScript, placé dans le répertoire adequat du projet **Lizmap** (cf. la [présentation de Lizmap](/prerequis/lizmap.html#modifications)).
 
 :::
 
@@ -128,13 +132,19 @@ const modal = $("div#lizmap-modal")
     .modal('hide')
 ```
 
+::: warning Note
+
+La méthode `modal()` est issue de la librairie JavaScript de Bootstrap, voir la [documentation](https://getbootstrap.com/docs/4.5/components/modal/#methods).
+
+:::
+
 ### Affichage de la modal
 
-Par soucis de complexité et de sécurité, la meilleure option était de recourir à la [Web Storage API](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API), présente dans la quasi totalité des navigateurs modernes.
+Par soucis de complexité et de sécurité, la meilleure option était de recourir à la [Web Storage API](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API), présente dans la quasi-totalité des navigateurs modernes, voir [Can I use](https://caniuse.com/#feat=namevalue-storage).
 
 ::: tip Fonctionnement du Web Storage
 
-Les deux mécanismes au sein du web storage sont les suivantes:
+Les deux mécanismes au sein du web storage sont les suivantes :
 
 - `sessionStorage` maintient une zone de stockage distinct pour chaque origine donnée qui est disponible pour la durée de la session de la page (tant que le navigateur est ouvert, y compris les rechargements et restaure)
 - `localStorage` fait la même chose, mais persiste même lorsque le navigateur est fermé et rouvert.
@@ -189,16 +199,14 @@ $("#btn-validate").on('click', function () {
 
 ## Conclusion
 
-Après avoir pris le temps d'analyser le problème et de réfléchir à différentes approches, je suis parvenu à trouver une solution simple pour venir à bout de ce problème.
+Après avoir pris le temps d'analyser le problème et de réfléchir à différentes approches, je suis parvenu à trouver une solution simple.
 
 L'avantage étant que la solution proposée rend la fonctionnalité facilement maintenable.
 
 En effet, si on avait choisi de modifier le code source de Lizmap ou la structure de la base de données, on aurait pu s'exposer à des problèmes bien plus difficile à corriger.
 
-Ce premier projet fut une très bonne entrée en matière car il m'a permis de découvrir mon environnement de travail et de monter en compétences sur plusieurs points :
+Ce premier projet fut une très bonne entrée en matière car il m'a permis de découvrir mon environnement de travail et de monter en compétences sur deux points :
 
-* **Lecture de documentation** : j'arrive désormais à appréhender des documentations plus sereinement et trouver les informations que je recherche plus rapidement.
-
-* **Utilisation d'outils existants** : cette compétence va de paire avec la précédente puisque la bonne lecture des documentations m'a permis de réutiliser des outils existants et de ne pas "réinventer la roue".
+* **Utilisation d'outils existants** : la bonne lecture des documentations m'a permis de réutiliser des outils existants, ici le `localStorage`, et de ne pas "réinventer la roue".
 
 * **Rejoindre un projet en cours** : en travaillant sur un projet existant, j'ai pu me rendre compte des capacités requises pour rejoindre un projet en cours, notament la prise en main des outils et manières de travailler de l'équipe.

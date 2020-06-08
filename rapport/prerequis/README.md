@@ -14,7 +14,7 @@ Afin de permettre à n'importe qui de suivre la présentation des différents pr
 
 La consultation de ces modules n'est donc pas obligatoire mais elle est fortement recommandées si :
 
-* Vous n'avez aucune idée de ce qu'est un SIG (et plus particulièrement QGIS).
+* Vous n'avez aucune idée de ce qu'est un SIG.
 
 * Vous ignorez ce que sont des flux WMS/WFS.
 

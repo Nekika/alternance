@@ -5,9 +5,9 @@ next: /prerequis/qgis-server
 
 # QGIS
 
-[QGIS](https://qgis.org) est un **logiciel SIG libre, open source et multiplatforme** conçu pour permettre à un utilisateur de manipuler des **données géospatiales**.
+[QGIS](https://qgis.org) est un **logiciel SIG libre, open-source et multiplatforme** conçu pour permettre à un utilisateur de manipuler des **données géospatiales**.
 
-Il est notamment intégré à la liste des logiciels libres préconisés par l’État français dans le cadre de la modernisation globale de ses systèmes d’informations.
+Il est notamment intégré à la liste des **logiciels libres préconisés par l’État français** dans le cadre de la **modernisation globale de ses systèmes d’informations.**
 
 <img src="../assets/images/qgis_exemple.png" title="Exemple de projet QGIS" alt="qgisexemple" data-align="center">
 
@@ -23,7 +23,7 @@ Le **canvas** est l'élément de l'interface utilisateur où sont affichées les
 
 ### Couches
 
-Dans QGIS (et généralement dans tous les SIG), les données sont organisées sous forme de **couches superposables**.
+Dans QGIS (et généralement dans tous les logiciels SIG), les données sont organisées sous forme de **couches superposables**.
 
 Une couche possède un **type** qui définit la nature des entités qui la compose. 
 
@@ -53,27 +53,11 @@ Elle est entièrement **réglable** par l'utilisateur, via la valeur de **l'éch
 
 En prenant exemple sur la photo plus haut, l'emprise est réglée de manière à ce que le département de Meurthe-et-Moselle soit entièrement englobé.
 
-## Plugins
-
-L'aspect **open source** de QGIS le rend **totalement customisable**, notamment en développant des **plugins** qui permettent d'ajouter de **nouvelles fonctionnalités**.
-
-Le logiciel propose notamment une **interface** permettant de **gérer** les extentions installées ou d'en **télécharger** de nouvelles depuis un **dépôt officiel** :
-
-<img src="../assets/images/qgis_extensions.png" title="L'interface de gestion des extensions dans QGIS" alt="qgisextensions" data-align="center">
-
-Il arrive que certains plugins développés par la communauté rencontrent un tel succès qu'ils viennent à être **intégrés nativement** dans QGIS.
-
-::: warning Note
-
-**DB Manager** une fonctionnalité native permettant de connecter QGIS aux bases de données était à l'origine une extensions développée par la communauté.
-
-:::
-
 ## Formats des données
 
 La force de QGIS est qu'il permet de travailler avec des données provenant de **sources variées**.
 
-Ainsi, il est possible d'importer des données depuis des **fichiers** (*ShapeFile, GeoPackage, GeoJSON, ..*.) ou de se connecter à une **base de donnée** capable de stocker des **données géospatiales** (cf. [#PostGIS](/prerequis/qgis.html#postgis)).
+Ainsi, il est possible d'importer des données depuis des **fichiers** (*ShapeFile, GeoPackage, GeoJSON, ..*.) ou de se connecter à une **base de données** capable de stocker des **données géospatiales** (cf. [#PostGIS](/prerequis/qgis.html#postgis)).
 
 Il est également possible de **convertir** les données d'un format à l'autre.
 
@@ -89,6 +73,22 @@ Chaque couche sauvegarde la **cofiguration** de la base de données dont elle pr
 
 ::: warning Note
 
-Cette dernière fonctionnalité permet notamment à **QGIS Server** d'avoir accès aux données [cf. présentation de QGIS Server](/prerequis/qgis-server).
+Cette dernière fonctionnalité permet notamment à **QGIS Server** d'avoir accès aux données ([cf. présentation de QGIS Server](/prerequis/qgis-server)).
+
+:::
+
+## Plugins
+
+L'aspect **open-source** de QGIS le rend **totalement customisable**, notamment en développant des **plugins** qui permettent d'ajouter de **nouvelles fonctionnalités**.
+
+Le logiciel propose notamment une **interface** permettant de **gérer** les extentions installées ou d'en **télécharger** de nouvelles depuis un **dépôt officiel** :
+
+![qgisextensions](../assets/images/qgis_extensions.png "L'interface de gestion des extensions dans QGIS")
+
+Il arrive que certains plugins développés par la communauté rencontrent un tel succès qu'ils viennent à être **intégrés nativement** dans QGIS.
+
+::: warning Note
+
+**DB Manager**, une fonctionnalité native permettant de gérer manipuler des bases de données depuis QGIS, était à l'origine une extensions développée par la communauté (cf. [DB Manager](https://docs.qgis.org/3.10/en/docs/training_manual/databases/db_manager.html)).
 
 :::

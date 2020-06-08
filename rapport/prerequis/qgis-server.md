@@ -5,7 +5,7 @@ next: /prerequis/lizmap
 
 # QGIS Server
 
-**QGIS Server** est un module qui permet d'utiliser QGIS comme **serveur de données géospatiales**.
+[QGIS Server](https://docs.qgis.org/3.10/en/docs/user_manual/working_with_ogc/server/index.html#label-qgisserver) est un module qui permet de se servir de QGIS comme **serveur de données géospatiales**.
 
 Il offre la possibilité de **générer** des **Web services** à partir d'un projet QGIS.
 
@@ -15,7 +15,7 @@ Il suffit simplement de l'installer, de le configurer sur un serveur Web et de l
 
 ## Flux WMS/WFS
 
-Comme annoncé précédemmenent, l'objectif de **QGIS Server** est de **générer** des **Web services** depuis un projet QGIS.
+Comme annoncé précédemmenent, l'objectif de QGIS Server est de **générer** des **Web services** depuis un projet QGIS.
 
 Ces Web services sont **standardisés** par [l'OGC](https://www.ogc.org/) et ceux que l'on utilise le plus souvent sont le **Web Map Service** (WMS) et le **Web Feature Service** (WFS).
 
@@ -31,15 +31,15 @@ Pour la configuration, il suffit de suivre l'exemple détaillé dans la [documen
 
 ## Servir un projet QGIS
 
-**QGIS Server** va récupérer les données contenues dans un projet QGIS afin de créer des **flux WMS/WFS**.
+QGIS Server va récupérer les données contenues dans un projet QGIS afin de créer des **flux WMS/WFS**.
 
-Dans le cas où les couches sont importées depuis une **base de données** telle que **PostGIS**, **QGIS Server** aura recours à la **configuration de la couche** pour se connecter à la base de données et récupérer les informations (cf. [présentation de QGIS](/prerequis/qgis#postgis)).
+Dans le cas où les couches sont importées depuis une **base de données** telle que **PostGIS**, QGIS Server aura recours à la **configuration de la couche** pour se connecter à la base de données et récupérer les informations (cf. [présentation de QGIS](/prerequis/qgis#postgis)).
 
-Pour indiquer à **QGIS Server** le projet à partir duquel il doit générer des **Web services**, deux options sont disponibles :
+Pour indiquer à QGIS Server le projet à partir duquel il doit générer des Web services, deux options sont disponibles :
 
 ### Par configuration
 
-Lors de la configuration de **QGIS Server**, il est possible d'ajouter une ligne dans le **fichier de configuration** du serveur Web fin de spécifier le projet à utiliser par défaut :
+Lors de la configuration de QGIS Server, il est possible d'ajouter une ligne dans le **fichier de configuration** du serveur Web fin de spécifier le projet à utiliser par défaut :
 
 ```apacheconf
 <VirtualHost *:80>
@@ -49,13 +49,13 @@ Lors de la configuration de **QGIS Server**, il est possible d'ajouter une ligne
 </VirtualHost>
 ```
 
-Cette option est très pratique lorsque **QGIS Server** est destiné à ne servir qu'un seul projet.
+Cette option est très pratique lorsque QGIS Server est destiné à ne servir qu'un seul projet.
 
 ::: warning Note
 
-Spécifier un projet par défaut n'implique pas que ce projet sera le seul capable d'être servi par **QGIS Server**.
+Spécifier un projet par défaut n'implique pas que ce projet sera le seul capable d'être servi par QGIS Server.
 
-Dans le cas où un projet par défaut est défini dans la configuration, il faut utiliser la méthode **par paramètre de requête HTTP** ci-dessous pour indiquer à **QGIS Server** le chemin vers le projet à servir.
+Dans le cas où un projet par défaut est défini dans la configuration, il faut utiliser la méthode **par paramètre de requête HTTP** ci-dessous pour indiquer à QGIS Server le chemin vers le projet à servir.
 
 :::
 

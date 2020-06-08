@@ -5,11 +5,13 @@ next: /projets/
 
 # Lizmap
 
+## Présentation
+
 Conçu par [3Liz](https://3liz.com), une société française spécialisée dans les services autour des logiciels libres SIG, [Lizmap](https://3liz.com/lizmap.html) est **logiciel open-source** se présentant comme un **plugin QGIS** permettant de créer des **applications Web cartographiques**.
 
 ![logolizmap](../assets/images/lizmap.png "Logo Lizmap")
 
-L'idée est de **permettre à des utilisateurs de QGIS** n'ayant peu ou pas de notions de développement Web de pouvoir **créer et deployer simplement une application Web cartographique** à partir d'un projet QGIS.
+L'idée est de **permettre à des utilisateurs de QGIS** n'ayant pas ou peu de notions de développement Web de pouvoir **créer et deployer simplement une application Web cartographique** à partir d'un projet QGIS.
 
 ::: danger Attention
 
@@ -17,7 +19,7 @@ Dans **Lizmap**, la **notion de projet** **diffère** de celle abordée dans les
 
 Avec **Lizmap**, voyons plutôt un projet QGIS comme une carte.
 
-Ainsi, un unique projet **Lizmap** peut contenir plusieurs cartes afin de créer plusieurs applications.
+Ainsi, un unique projet **Lizmap** peut générer plusieurs applications à partir de plusieurs cartes.
 
 Ce mécanisme permet de découper une thématique en plusieurs applications.
 
@@ -73,8 +75,14 @@ De la même manière, `mon_super_projet/media/*/ma_premiere_carte` permet d'appo
 
 ## Inconvénient
 
-Bien qu'il soit possible d'apporter des modifications aux applications créées par **Lizmap**, une véritable customisation reste difficile à produire.
+Bien qu'il soit possible d'apporter des modifications aux applications créées par **Lizmap**, une véritable personnalisation reste difficile à produire.
 
 En effet, à l'heure actuelle, **3Liz** ne propose pas **d'API** ou de **documentation** permettant de **réutiliser** leur code.
 
 Si l'on souhaite proposer une interface **totalement différente** de celle proposée par Lizmap, le mieux reste de développer une **nouvelle application** en utilisant une **autre technologie**.
+
+::: warning Note
+
+Cet inconvénient a été déterminant dans le choix des technologies du projet **Bourgs-Centres** (cf. [Bourgs-Centres](/projets/bourgs-centres)).
+
+:::

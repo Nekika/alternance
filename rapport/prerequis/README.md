@@ -18,7 +18,7 @@ La consultation de ces modules n'est donc pas obligatoire mais elle est fortemen
 
 * Vous ignorez ce que sont des flux WMS/WFS.
 
-* Vous souhaitez découvrir le fonctionnement de QGIS Server et PostGIS.
+* Vous souhaitez découvrir le fonctionnement de QGIS Server et Lizmap.
 
 * Vous êtes effrayé par les termes *emprise* ou *couche vectorielle*.
 

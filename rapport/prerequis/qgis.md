@@ -1,6 +1,7 @@
 ---
 prev: /prerequis/
 next: /prerequis/qgis-server
+title: Prérequis - QGIS
 ---
 
 # QGIS

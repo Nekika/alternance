@@ -1,7 +1,7 @@
 ---
 prev: /projets/modal
-next: /liens
-title: SMC
+next: /projets/bourgs-centres
+title: Projets - SMC
 ---
 
 # SMC (Sélection Multi Couches)

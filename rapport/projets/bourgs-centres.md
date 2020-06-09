@@ -1,6 +1,7 @@
 ---
-prev: /projets/
-next: /projets/modal
+prev: /projets/smc
+next: /projets/liens
+title: Projets - Bourgs-Centres
 ---
 
 # Bourgs-Centres

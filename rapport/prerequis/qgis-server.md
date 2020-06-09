@@ -1,6 +1,7 @@
 ---
 prev: /prerequis/qgis
 next: /prerequis/lizmap
+title: Prérequis - QGIS Server
 ---
 
 # QGIS Server

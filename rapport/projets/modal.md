@@ -1,6 +1,7 @@
 ---
-prev: /projets/bourgs-centres
+prev: /projets/
 next: /projets/smc
+title: Projets - Modal
 ---
 
 # Modal

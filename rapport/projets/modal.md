@@ -42,11 +42,11 @@ Afin d'empêcher la modal de s'afficher lorsque l'utilisateur le décide, il ét
 
 - **Interaction** : créer un moyen permettant à l'utilisateur de désactiver l'affichage de la modal au lancement de l'application.
 
-- **Sauvegarde du choix** : le choix de l'utilisateur doit être stocké quelque part afin d'être consultée au lancement de l'application.
+- **Sauvegarde du choix** : le choix de l'utilisateur doit être stocké quelque part afin d'être consulté au lancement de l'application.
 
 #### Interaction
 
-Afin de permettre à l'utilisateur de choisir s'il souhaite voir apparaître la modal au lancement de l'application, le moyen le plus simple est d'intégrer une checkbox :
+Afin de permettre à l'utilisateur de choisir s'il souhaite voir apparaître la modal au lancement de l'application, le moyen le plus simple est d'intégrer une **checkbox** :
 
 ```html
 <input type="checkbox">
@@ -54,7 +54,7 @@ Afin de permettre à l'utilisateur de choisir s'il souhaite voir apparaître la 
 
 #### Sauvegarde du choix
 
-Une fois que l'utilisateur était en mesure de choisir s'il voulait masquer la modal lors de ses futures utilisations, il fallait mettre en place un moyen permettant de sauvegarder son choix.
+Une fois que l'utilisateur était en mesure de choisir s'il voulait masquer la modal lors de ses futures utilisations, il fallait mettre en place un moyen permettant de **sauvegarder** son choix.
 
 Plusieurs moyens étaient alors envisageables :
 
@@ -64,19 +64,19 @@ Plusieurs moyens étaient alors envisageables :
 
 ## Solution proposée
 
-En gardant le contenu, la disposition et le style d'origine de la modal, j'ai revu son intégration au sein de l'application.
+En gardant le **contenu**, la **disposition** et le **style d'origine** de la modal, j'ai revu son intégration au sein de l'application :
 
 <img src="../assets/images/modal_new_preview.png" title="Modal actuelle" alt="modal_new_preview" data-align="center">
 
 ::: warning Note
 
-Tout le code qui suit est écrit au sein d'un seul et même fichier JavaScript, placé dans le répertoire adequat du projet **Lizmap** (cf. la [présentation de Lizmap](/prerequis/lizmap.html#modifications)).
+Tout les extraits code qui suivent sont écrits au sein d'un seul et même fichier JavaScript, placé dans le répertoire spécifique à ce projet **Lizmap** (cf. la [présentation de Lizmap](/prerequis/lizmap.html#modifications)).
 
 :::
 
 ### Structure
 
-La structure de la modal est définie dans une seule variable à l'aide des backquotes :
+La structure de la modal est définie dans **une seule variable** à l'aide de **backquotes** :
 
 ```js
 const modalContent =
@@ -125,7 +125,7 @@ const modalContent =
 
 ### Intégration
 
-La modal est intégrée à l'arborescence puis masquée :
+La modal est intégrée à **l'arborescence** puis masquée :
 
 ```js
 const modal = $("div#lizmap-modal")
@@ -135,30 +135,30 @@ const modal = $("div#lizmap-modal")
 
 ::: warning Note
 
-La méthode `modal()` est issue de la librairie JavaScript de Bootstrap, voir la [documentation](https://getbootstrap.com/docs/4.5/components/modal/#methods).
+La méthode `modal()` est issue de la librairie JavaScript de **Bootstrap**, voir la [documentation](https://getbootstrap.com/docs/4.5/components/modal/#methods).
 
 :::
 
 ### Affichage de la modal
 
-Par soucis de complexité et de sécurité, la meilleure option était de recourir à la [Web Storage API](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API), présente dans la quasi-totalité des navigateurs modernes, voir [Can I use](https://caniuse.com/#feat=namevalue-storage).
+Par soucis de **complexité** et de **sécurité**, la meilleure option était de recourir à la [Web Storage API](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API), présente dans la **quasi-totalité** des navigateurs modernes, voir [Can I use](https://caniuse.com/#feat=namevalue-storage).
 
 ::: tip Fonctionnement du Web Storage
 
-Les deux mécanismes au sein du web storage sont les suivantes :
+Les deux mécanismes au sein du Web Storage sont les suivantes :
 
-- `sessionStorage` maintient une zone de stockage distinct pour chaque origine donnée qui est disponible pour la durée de la session de la page (tant que le navigateur est ouvert, y compris les rechargements et restaure)
+- `sessionStorage` maintient une zone de stockage distinct pour chaque origine donnée qui est disponible pour la durée de la session de la page (tant que le navigateur est ouvert, y compris les rechargements et restaure).
 - `localStorage` fait la même chose, mais persiste même lorsque le navigateur est fermé et rouvert.
 
 *source : [MDN](https://developer.mozilla.org/fr/docs/Web/API/Web_Storage_API)*
 
 :::
 
-Dans notre cas, le module le plus adapté est évidemment `localStorage` puisque l'on souhaite sauvegarder une information pour "toujours".
+Dans notre cas, le module le plus adapté est évidemment `localStorage` puisque l'on souhaite sauvegarder une information pour **"toujours"**.
 
 #### Fonctionnement
 
-Au lancement de l'application, on vérifie dans le `localStorage` si une information concernant l'affichage de la modal est présente. Si ce n'est pas le cas, on affiche la modal :
+Au **démarrage** de l'application, on vérifie dans le `localStorage` si une information concernant l'affichage de la modal est présente. Si ce n'est pas le cas, on affiche la modal :
 
 ```js
 function displayModal() {
@@ -169,7 +169,7 @@ function displayModal() {
 }
 ```
 
-Ainsi, il suffit de stocker un ensemble clé/valeur dans le `localStorage` lorsque l'utilisateur décide de ne plus afficher la modal :
+Ainsi, il suffit de stocker **un couple clé/valeur** dans le `localStorage` lorsque l'utilisateur décide de ne plus afficher la modal :
 
 ```js
 function disableModal() {
@@ -179,7 +179,7 @@ function disableModal() {
 
 ::: warning Note
 
-Bien que dans notre cas, la valeur à stocker soit un booléen, le `localStorage` permet seulement de stocker des données au format **chaîne de caractères**. 
+Bien que dans notre cas, la valeur à stocker soit un **booléen**, le `localStorage` permet seulement de stocker des données au format **chaîne de caractères**. 
 
 C'est ce qui justifie que la valeur stockée soit `'false'` et non `false`.
 
@@ -187,7 +187,7 @@ C'est ce qui justifie que la valeur stockée soit `'false'` et non `false`.
 
 Lorsque ces deux fonctions ont été définies, il ne reste plus qu'à ajouter un `event listener` sur le bouton *J'ai compris* de la modal. 
 
-Si la checkbox est cochée lorsque ce boutton est pressé, la fonction `disableModal` est appelée afin de sauvegarder le choix de l'utilisateur :
+Si la checkbox est cochée lorsque ce boutton est pressé, la fonction `disableModal` est appelée afin de **sauvegarder** le choix de l'utilisateur :
 
 ```js
 $("#btn-validate").on('click', function () {
@@ -200,13 +200,13 @@ $("#btn-validate").on('click', function () {
 
 ## Conclusion
 
-Après avoir pris le temps d'analyser le problème et de réfléchir à différentes approches, je suis parvenu à trouver une solution simple.
+Après avoir pris le temps d'analyser le problème et de réfléchir à différentes approches, je suis parvenu à trouver **une solution simple**.
 
-L'avantage étant que la solution proposée rend la fonctionnalité facilement maintenable.
+L'avantage étant que la solution proposée rend la fonctionnalité **facilement maintenable**.
 
-En effet, si on avait choisi de modifier le code source de Lizmap ou la structure de la base de données, on aurait pu s'exposer à des problèmes bien plus difficile à corriger.
+En effet, si on avait choisi de modifier le code source de Lizmap ou la structure de la base de données, on aurait pu s'exposer à des problèmes **bien plus difficile à corriger**.
 
-Ce premier projet fut une très bonne entrée en matière car il m'a permis de découvrir mon environnement de travail et de monter en compétences sur deux points :
+Ce premier projet fut une très bonne entrée en matière car il m'a permis de **découvrir mon environnement de travail** et de **monter en compétences** sur deux points :
 
 * **Utilisation d'outils existants** : la bonne lecture des documentations m'a permis de réutiliser des outils existants, ici le `localStorage`, et de ne pas "réinventer la roue".
 

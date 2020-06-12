@@ -100,6 +100,8 @@ L'utilisation de technologies **open-source** est très importante puisqu'elle s
 
 ## Solution proposée
 
+Voici une démonstration permettant de visualiser l'état d'avancement du projet :
+
 ![](../assets/images/bourgs-centres_preview_alpha.gif)
 
 ::: warning Note
@@ -112,29 +114,95 @@ La priorité étant d'implémenter les fonctionnalités minimales, il n'y a donc
 
 ### Interface
 
+Elle peut être découpée en 3 éléments :
+
+* **Carte** : l'élément principal de l'application sur lequel sont représentées les données.
+
+* **Menu** : présentant la **Liste des couches** qui permet de visualiser celles qui sont disponibles, cet élément intègre également une **Légende** associée à chaque couche.
+
+* **Formulaire** : c'est l'élément qui offre à l'utilisateur la possibilité de saisir des données.
+
 ### Fonctionnement
+
+Développés indépendamment les uns des autres, les éléments de l'interface sont toutefois en mesure de manipuler des données communes grâce au module **Vuex** (cf. la section [#Vue.js](/projets/bourgs-centres.html#vue-js)).
+
+Pour faire simple, Vuex crée un **store** permettant de stocker des données qui seront accessibles partout dans l'application.
+
+Cet aspect rend l'explication du fonctionnement plus simple :
+
+Au démarrage, les données utiles (couches, entités) sont récupérées, stockées dans le store et représentées sur la carte.
+
+L'utilisateur peut alors consulter, modifier ou supprimer des données existantes ou bien en créer de nouvelles.
+
+Lorsque il est satisfait du résultat, l'utilisateur peut fermer la fenêtre de son navigateur puisque tous les changement ont été immédiatement effectués dans la base de données.
+
+Ce fonctionnement permet à l'utilisateur de ne se soucier que de la consultation ou la mise à jour de ses données.
 
 ## Côté serveur
 
-### Choix des technologies
+Avant d'entreprendre le développement de l'application client, il fut nécessaire de mettre en place la **partie serveur**, reponsable de la **gestion des données.**
 
-Rester cohérent à l'environnement du service et des serveurs
+::: warning Note
+
+La totalité du travail présenté ici a été réalisée sur un **serveur de test.** 
+
+Il n'y avait donc pas de vértiable risque, ce qui m'a permis de configurer toute la partie serveur moi-même.
+
+:::
 
 ### Administration serveur
 
-Upgrade QGIS, config QGIS Server
+Avant toute chose, j'ai commencé par configurer **l'environnement technique** du serveur de test :
+
+* **Mise à jour des outils** : installation des dernières versions de **QGIS**, **QGIS Server** et **PostGIS.**
+
+* **Configuration du serveur Web** : création d'un **VirtualHost Apache** et configuration de QGIS Server (cf. la [présentation de QGIS Server](/prerequis/qgis-server)).
+
+* **Administration de la base de données** : création du **schéma** et des différentes **tables**.
 
 ### Configuration du projet QGIS
 
+L'environnement mis en place, j'ai pu créer le **projet QGIS** à partir duquel QGIS Server génèrera les **Web services.**
+
+<img src="../assets/images/qgis_bourgs-centres.png" title="Projet QGIS Bourgs-Centres" alt="qgis_bourgs-centres" data-align="center">
+
 #### Couches
+
+On distingue deux groupes de couches au sein du projet :
+
+* **Fonds** : dans notre cas on ne retrouve que la couche *limad_communes*, affichant les **limites administratives** des communes de Meurthe-et-Moselle, mais on pourrait y retrouver des **fonds de carte** ou des **photos aériennes.**
+
+* **Catégories** : les différentes **thématiques** pouvant être abordées par les **Bourgs-Centres**, telles que l'Éducation, la Santé ou le Tourisme.
+
+Les couches au sein du groupe **Catégories** sont toutes des couches de **type vectoriel** puisque la totalité des entités du projet Bourgs-Centres seront représentées par des **formes géométriques** (cf. la [présentation de QGIS](/prerequis/qgis.html#notions)).
 
 #### Styles
 
+Sur la capture d'écran au-dessus, on peut distinguer que chaque couche possède sa propre liste de **marqueurs**, qu'elle attribue à ses entités en fonction de la **valeur** contenue dans leur champ *type*.
+
+Par exemple, dans le cas de la couche Éducation, les valeurs du champ *type* peuvent être :  `collège`, `crèche`, `école maternelle`, `école primaire` ou `lycée`.
+
+Chaque entité se verra donc attribuer le marqueur correspondant à la valeur contenue dans ce champ (cf. la [présentation de QGIS](/prerequis/qgis.html#notions)).
+
 #### Publication des flux WMS/WFS
+
+Afin que QGIS Server puisse être en mesure de générer des **Web services** depuis le projet QGIS, il est nécessaire d'y ajouter quelques **configurations** :
+
+* **Capacités des services** : ensemble de **métadonnées** qui seront publiées dans la réponse des requêtes *GetCapabilities*.
+
+* **Capacités WMS** : réglage de **l'emprise** contenant les données à publier et du **système de coordonées** (SCR), **exclusion** de certaines couches (ici celles du groupe **Fonds**).
+
+* **Capacités WFS** : sélection des couches qui verront les données de leurs entités **publiées** et des **opérations** pouvant êtres réalisées sur ces dernières (Insertion, Mise à jour, Suppression).
+
+Lorsque la configuration est terminée, il suffit d'enregister les modifications apportées au projet QGIS.
+
+Les données sont alors **immédiatement disponibles** via les flux WMS et WFS (cf. la [présentation de QGIS Server](/prerequis/qgis-server.html#flux-wms-wfs)).
 
 ## Côté client
 
 persistence instantanée (possible de modifier un élément tout juste inséré sans refresh)
+
+
 
 ### Choix des technologies
 
@@ -144,9 +212,11 @@ Liberté
 
 **vuex**
 
-### Leaflet
+#### Leaflet
 
-### axios
+#### axios
+
+### Développement
 
 ## Confinement et télétravail
 

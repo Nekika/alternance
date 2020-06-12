@@ -44,6 +44,16 @@ Les entités sont les éléments qui **peuplent** une couche.
 
 Une entité **hérite** ses propriétés de la couches à laquelle elle appartient.
 
+### Styles
+
+Dans QGIS, chaque couche peut se voir attribuer un **style**. 
+
+Ce n'est ni plus ni moins que des **règles** définissant la manière dont les entités de la couches doivent êtres **représentées**.
+
+Aussi, au sein d'une même couche, il est possible de définir des règles **différentes** pour les entités, en fonction de la **valeur d'un champ.**
+
+De ce fait, chaque couche peut posséder sa propre liste de règle, et donc **sa propre légende.**
+
 ### Emprise
 
 Ce terme peut être défini comme le **périmètre englobant tous les éléments visibles**.

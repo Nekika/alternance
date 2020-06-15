@@ -288,7 +288,19 @@ Ce choix s'est fait naturellement puisque **Leaflet** est de loin la meilleure l
 
 Puisqu'il est nécessaire de pouvoir communiquer avec les **Web services** par le biais de **requêtes HTTP**, j'ai décidé de me service **d'axios**, un **client HTTP** JavaScript **open-source** basé sur le principe de [Promise](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise).
 
-Il est vrai que j'aurai pu utiliser [l'API XMLHttpRequest](https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest) et créer mes propres fonctions, mais j'ai souhaité gagner du temps sur cette partie étant donné qu'il y avait déjà une charge de travail importante à fournir.
+```js
+import axios from 'axios'
+
+axios.get('https://mon.url')
+     .then(maData => {
+        console.log(maData)
+      })
+      .catch(erreur => {
+        console.log('Oups...' + erreur)
+      })
+```
+
+Il est vrai que j'aurai pu utiliser [l'API XMLHttpRequest](https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest) et créer mes propres fonctions, mais j'ai souhaité gagner du temps sur cette partie étant donné qu'il y avait déjà une charge de travail importante à fournir à d'autres niveaux.
 
 #### xml-js
 

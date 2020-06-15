@@ -165,7 +165,7 @@ Il n'était alors pas nécessaire de fournir une interface utilisateur permettan
 
 L'idée est de fournir un outil capable d'effectuer la sélection **en un seul clic** :
 
-<img src="../assets/images/smc_preview.gif" title="" alt="smc_preview" data-align="center">
+<img title="" src="../assets/images/smc/preview.gif" alt="smc_preview" data-align="center">
 
 ### Structure
 

@@ -22,7 +22,7 @@ Ce premier projet m'a permis de prendre en main et customiser une application **
 
 :::
 
-<img src="../assets/images/modal_old_preview.png" title="Modal d'origine" alt="modal_old_preview" data-align="center">
+<img src="../assets/images/modal/old.png" title="Modal d'origine" alt="modal_old_preview" data-align="center">
 
 ## Analyse
 
@@ -66,7 +66,7 @@ Plusieurs moyens étaient alors envisageables :
 
 En gardant le **contenu**, la **disposition** et le **style d'origine** de la modal, j'ai revu son intégration au sein de l'application :
 
-<img src="../assets/images/modal_new_preview.png" title="Modal actuelle" alt="modal_new_preview" data-align="center">
+<img src="../assets/images/modal/new.png" title="Modal actuelle" alt="modal_new_preview" data-align="center">
 
 ::: warning Note
 

@@ -57,7 +57,7 @@ Pour s'occuper au mieux des différentes thématiques dans lesquelles il est eng
 
 Chaque direction est elle-même divisée en **services départementaux** qui se focalisent sur une **thématique précise**.
 
-<img title="Organigramme général des services départementaux" src="./assets/images/organigramme_general.png" alt="organigramme_general" data-align="center">
+<img title="Organigramme général des services départementaux" src="./assets/images/cd54/organigramme_general.png" alt="organigramme_general" data-align="center">
 
 ## Le service SIG
 
@@ -103,7 +103,7 @@ Lorsque les données ont été récupérées, elles sont prêtes à être utilis
 
 Afin de les manipuler, les géomaticiens du Conseil Départemental utilisent [QGIS](https://qgis.org), un logiel **libre** et **open source** destiné à manipuler des **données géospatiales**.
 
-<img src="./assets/images/qgis_logo.png" title="QGIS" alt="qgis_logo" data-align="center">
+<img title="QGIS" src="./assets/images/logos/qgis.png" alt="qgis_logo" data-align="center">
 
 ::: warning Note
 

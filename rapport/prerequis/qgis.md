@@ -10,7 +10,7 @@ title: Prérequis - QGIS
 
 Il est notamment intégré à la liste des **logiciels libres préconisés par l’État français** dans le cadre de la **modernisation globale de ses systèmes d’informations.**
 
-<img src="../assets/images/qgis_exemple.png" title="Exemple de projet QGIS" alt="qgisexemple" data-align="center">
+<img src="../assets/images/qgis/exemple.png" title="Exemple de projet QGIS" alt="qgisexemple" data-align="center">
 
 ## Notions
 
@@ -94,7 +94,7 @@ L'aspect **open-source** de QGIS le rend **totalement customisable**, notamment 
 
 Le logiciel propose notamment une **interface** permettant de **gérer** les extentions installées ou d'en **télécharger** de nouvelles depuis un **dépôt officiel** :
 
-![qgisextensions](../assets/images/qgis_extensions.png "L'interface de gestion des extensions dans QGIS")
+<img src="../assets/images/qgis/extensions.png" title="L'interface de gestion des extensions dans QGIS" alt="qgisextensions" data-align="center">
 
 Il arrive que certains plugins développés par la communauté rencontrent un tel succès qu'ils viennent à être **intégrés nativement** dans QGIS.
 

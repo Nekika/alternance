@@ -32,6 +32,8 @@ En effet, grâce à **liste des besoins** émise par les différents services im
 
 Cette vision nous a ensuite permis d'énumérer les **fonctionnalités** à implémenter et donc de définir **l'environnement technologique** de l'application.
 
+<img src="../assets/images/bourgs-centres/maquette.png" title="Maquette de l'interface" alt="bourgs-centres_maquette" data-align="center">
+
 ### Besoin
 
 L'objectif est de proposer une application de cartographie **accessible** à des utilisateurs novices, permettant à ces derniers de **saisir des données.**
@@ -102,8 +104,6 @@ L'utilisation de technologies **open-source** est très importante puisqu'elle s
 
 Voici une démonstration permettant de visualiser l'état d'avancement du projet :
 
-![](../assets/images/bourgs-centres_preview_alpha.gif)
-
 ::: warning Note
 
 Cette démonstration présente une version en cours de développement.
@@ -164,7 +164,7 @@ Avant toute chose, j'ai commencé par configurer **l'environnement technique** d
 
 L'environnement mis en place, j'ai pu créer le **projet QGIS** à partir duquel QGIS Server génèrera les **Web services.**
 
-<img src="../assets/images/qgis_bourgs-centres.png" title="Projet QGIS Bourgs-Centres" alt="qgis_bourgs-centres" data-align="center">
+<img src="../assets/images/bourgs-centres/projet_qgis.png" title="Projet QGIS Bourgs-Centres" alt="qgis_bourgs-centres" data-align="center">
 
 #### Couches
 

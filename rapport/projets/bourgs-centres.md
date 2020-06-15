@@ -280,6 +280,8 @@ Dans notre cas, ce module a grandement facilité la **transmission de données i
 
 Pour ce qui est de l'affichage de la carte et des entités, j'ai choisi d'utiliser **Leaflet**, une librairie JavaScript open-source pour créer des **cartes interactives**.
 
+<Leaflet></Leaflet>
+
 Ce choix s'est fait naturellement puisque **Leaflet** est de loin la meilleure librairie de cartographie **open-source** pour JavaScript, notamment grâce à son API très **complète** et **simple** à prendre en main.
 
 #### axios

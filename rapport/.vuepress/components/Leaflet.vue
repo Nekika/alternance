@@ -56,5 +56,6 @@ export default {
 #mapid {
     width: 100%;
     height: 400px;
+    z-index: 0;
 }
 </style>

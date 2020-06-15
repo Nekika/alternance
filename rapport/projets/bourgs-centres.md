@@ -32,13 +32,13 @@ En effet, grâce à **liste des besoins** émise par les différents services im
 
 Cette vision nous a ensuite permis d'énumérer les **fonctionnalités** à implémenter et donc de définir **l'environnement technologique** de l'application.
 
-<img src="../assets/images/bourgs-centres/maquette.png" title="Maquette de l'interface" alt="bourgs-centres_maquette" data-align="center">
-
 ### Besoin
 
 L'objectif est de proposer une application de cartographie **accessible** à des utilisateurs novices, permettant à ces derniers de **saisir des données.**
 
 Le terme **accessible** est très important puisqu'il détermine la direction que doit prendre le projet du point de vue du **support** et de **l'expérience utilisateur**.
+
+<img src="../assets/images/bourgs-centres/maquette.png" title="Maquette de l'interface" alt="bourgs-centres_maquette" data-align="center">
 
 #### Support
 
@@ -48,13 +48,13 @@ Une **application Web** semble donc être le support adapté pour répondre au b
 
 #### Expérience utilisateur
 
-En terme d'expérience utilisateur, il est nécessaire de la rendre le plus simple possible. Pour cela, les actions de l'utilisateurs doivent être **intuitives** et **peu nombreuses.**
+En terme d'expérience utilisateur, il est indispensable que cette dernière soit le plus simple possible. Pour cela, les actions de l'utilisateurs doivent être **intuitives** et **peu nombreuses.**
 
-L'objectif de l'application étant de **localiser** des projets d'aménagement et de **fournir des informations** à leur propos, il est indispensable que la prise en main du mécanisme de localisation soit **intuitive** et **rapide**, et que la saisie des données se fasse via un **formulaire simple.**
+L'objectif de l'application étant de **localiser** des projets d'aménagement et de **fournir des informations** à leur propos, il faut que la prise en main du mécanisme de localisation soit **intuitive** et **rapide**, et que la saisie des données se fasse via un **formulaire simple.**
 
 #### Fonctionnalités
 
-L'analyse du besoin et de l'expérience utilisateur a permis d'établir un liste de **fonctionnalités minimales**, nécessaires pour proposer une première version d'application **déployable** et **utilisable** :
+L'analyse du besoin et de l'expérience utilisateur a servi à établir un liste de **fonctionnalités minimales et indispensables** permettant de proposer une première version d'application **utilisable** :
 
 * **Affichage des données** : représenter les données en fonction de leur nature (point, ligne ou polygone) sur une carte dynamique.
 
@@ -66,7 +66,7 @@ L'analyse du besoin et de l'expérience utilisateur a permis d'établir un liste
 
 ### Technologies
 
-Afin de rester **cohérent** avec l'environnement technique le fonctionnement du service SIG, la **partie serveur** sera développé à l'aide des technologies habituelles :
+Afin de rester **cohérent** avec l'environnement technique le fonctionnement du service SIG, la **partie serveur** sera développé à l'aide des technologies habituelles (cf. [prérequis](/prerequis/)) :
 
 * **QGIS** : création et configuration du projet.
 
@@ -74,9 +74,7 @@ Afin de rester **cohérent** avec l'environnement technique le fonctionnement du
 
 * **PostGIS** : persitence des données.
 
-Pour en savoir plus sur ces technologies, voir les [prérequis](/prerequis/).
-
-Au niveau de la **partie client**, nous avons du choisir entre **Lizmap** ou partir sur un tout nouvel environnement technique.
+Au niveau de la **partie client**, nous avons du choisir entre **Lizmap** ou un tout **nouvel environnement technique.**
 
 Après avoir pris le temps d'analyser les avantages et les inconvénients de chaque option, nous avons décidé de ne pas retenir **Lizmap** pour ce projet. 
 
@@ -84,25 +82,21 @@ En effet, malgré les nombreux avantages proposés par cette solution, c'est sa 
 
 #### Nouveau départ
 
-En choisissant de ne pas utiliser **Lizmap**, il était nécessaire de définir un **nouvel environnement technique** nous permettant d'implémenter toutes les **fonctionnalités minimales** :
+En ce qui concerne le **nouvel environnement technologique**, j'ai eu l'immense opportunité de **choisir** les technologies avec lesquelles je souhaitais travailler :
 
-* **Vue.js** : un framework JavaScript open-source conçu pour constuire des **interfaces utilisateur**, voir la [documentation](https://fr.vuejs.org/).
+- **Vue.js** : construction de l'interface utilisateur.
 
-* **Leaflet** : une librairie JavaScript open-source pour créer des **cartes interactives**, voir la [documentation](https://leafletjs.com/).
+- **Leaflet** : affichage des données géospatiales sur une carte interactive.
 
-* **axios** : un **client HTTP** JavaScript open-source basé sur le principe de [Promise](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), voir la [documentation](https://github.com/axios/axios).
+- **axios** : communication avec le serveur Web via des requêtes HTTP.
 
-Vous pouvez retrouver la justification du choix de ces technologies dans la section [#Côté client](/projets/bourgs-centres.html#cote-client).
-
-::: warning Note
-
-L'utilisation de technologies **open-source** est très importante puisqu'elle s'inscrit comme un des fondements de la philosophie du service SIG.
-
-:::
+Vous pouvez retrouver la présentation et la justification du choix de ces technologies dans la section [#Côté client](/projets/bourgs-centres.html#cote-client).
 
 ## Solution proposée
 
 Voici une démonstration permettant de visualiser l'état d'avancement du projet :
+
+<img src="../assets/images/bourgs-centres/preview_alpha.gif" title="Démonstration version de développement" alt="bourgs-centres_preview_alpha" data-align="center">
 
 ::: warning Note
 
@@ -124,19 +118,17 @@ Elle peut être découpée en 3 éléments :
 
 ### Fonctionnement
 
-Développés indépendamment les uns des autres, les éléments de l'interface sont toutefois en mesure de manipuler des données communes grâce au module **Vuex** (cf. la section [#Vue.js](/projets/bourgs-centres.html#vue-js)).
+Développés **indépendamment** les uns des autres, les éléments de l'interface sont toutefois en mesure de manipuler des **données communes** grâce au module **Vuex** (cf. la section [#Vue.js](/projets/bourgs-centres.html#vue-js)).
 
-Pour faire simple, Vuex crée un **store** permettant de stocker des données qui seront accessibles partout dans l'application.
+Pour faire simple, Vuex crée un **store** permettant de stocker des données qui seront accessibles **partout** dans l'application.
 
 Cet aspect rend l'explication du fonctionnement plus simple :
 
-Au démarrage, les données utiles (couches, entités) sont récupérées, stockées dans le store et représentées sur la carte.
+Au démarrage, les données utiles (couches, entités) sont **récupérées**, **stockées** dans le store et **représentées** sur la carte.
 
-L'utilisateur peut alors consulter, modifier ou supprimer des données existantes ou bien en créer de nouvelles.
+L'utilisateur peut alors **consulter**, **modifier** ou **supprimer** des données existantes ou bien en **créer** de nouvelles.
 
-Lorsque il est satisfait du résultat, l'utilisateur peut fermer la fenêtre de son navigateur puisque tous les changement ont été immédiatement effectués dans la base de données.
-
-Ce fonctionnement permet à l'utilisateur de ne se soucier que de la consultation ou la mise à jour de ses données.
+Lorsque il est satisfait du résultat, l'utilisateur peut fermer la fenêtre de son navigateur puisque tous les changement ont été **immédiatement effectués** dans la base de données.
 
 ## Côté serveur
 
@@ -170,9 +162,9 @@ L'environnement mis en place, j'ai pu créer le **projet QGIS** à partir duquel
 
 On distingue deux groupes de couches au sein du projet :
 
-* **Fonds** : dans notre cas on ne retrouve que la couche *limad_communes*, affichant les **limites administratives** des communes de Meurthe-et-Moselle, mais on pourrait y retrouver des **fonds de carte** ou des **photos aériennes.**
+* **Fonds** : couches de **délimitation** (limites administratives par exemple), **fonds de carte** ou **photos aériennes.**
 
-* **Catégories** : les différentes **thématiques** pouvant être abordées par les **Bourgs-Centres**, telles que l'Éducation, la Santé ou le Tourisme.
+* **Catégories** : les différentes **thématiques** pouvant être abordées par les Bourgs-Centres, telles que **l'Éducation**, la **Santé** ou le **Tourisme**.
 
 Les couches au sein du groupe **Catégories** sont toutes des couches de **type vectoriel** puisque la totalité des entités du projet Bourgs-Centres seront représentées par des **formes géométriques** (cf. la [présentation de QGIS](/prerequis/qgis.html#notions)).
 
@@ -182,7 +174,7 @@ Sur la capture d'écran au-dessus, on peut distinguer que chaque couche possède
 
 Par exemple, dans le cas de la couche Éducation, les valeurs du champ *type* peuvent être :  `collège`, `crèche`, `école maternelle`, `école primaire` ou `lycée`.
 
-Chaque entité se verra donc attribuer le marqueur correspondant à la valeur contenue dans ce champ (cf. la [présentation de QGIS](/prerequis/qgis.html#notions)).
+Chaque entité se verra donc attribuer le marqueur correspondant à la valeur contenue dans ce champ (cf. la [présentation de QGIS](/prerequis/qgis.html#styles)).
 
 #### Publication des flux WMS/WFS
 
@@ -206,23 +198,24 @@ Pour commencer, je présenterai les **principales technologies** auxquelles j'ai
 
 Enfin, je reviendrai en détail sur le **développement** de l'application, en illustrant les explications à l'aide **d'extraits de code.**
 
-### Choix des technologies
+### Environnement technologique
 
-En ce qui concerne le choix du **nouvel environnement technique**, j'ai eu l'immense opportunité de **choisir** les technologies avec lesquelles je souhaitais travailler.
-
-Ainsi, j'ai décidé de choisir des technologies que je connaissais de part ma formation en **Lience Professionnelle** ou de part ma **veille technologique** personnelle, mais que je ne maitrisais pas.
+J'ai décidé de choisir des technologies que je connaissais de part ma formation en **Lience Professionnelle** ou de part ma **veille technologique** personnelle, mais que je ne maitrisais pas.
 
 J'ai fait ce choix en étant convaincu que travailler sur un projet tel que celui-ci serait le meilleur moyen de **monter en compétences**, que ce soit au niveau de ces outils ou plus généralement sur la **prise en main** de nouvelles technologies.
 
 #### Vue.js
 
-**Vue** est [framework](https://fr.wikipedia.org/wiki/Framework) **JavaScript** open-source conçu pour constuire des **interfaces utilisateur**.
+<img src="../assets/images/logos/vue.png" title="Logo Vue.js" alt="logo-vue" data-align="center">
 
-L'ayant découvert et apprécié au cours de ma formation en Licence Professionnelle, j'ai souhaité l'utiliser dans le cadre du projet **Bourgs-Centres.**
+**Vue** est un [framework](https://fr.wikipedia.org/wiki/Framework) JavaScript **open-source** conçu pour constuire des **interfaces utilisateur**, voir la [documentation](https://fr.vuejs.org/v2/guide/index.html).
 
-**Vue** m'a permis de développer les **composants** qui forment les différentes parties de l'interface de l'application. Ces derniers sont définis dans des fichiers dotés de l'extension `.vue`, offrant la possiblité de déterminer la **structure HTML**, le **comportement** et le **style** :
+L'ayant découvert et apprécié au cours de ma formation en Licence Professionnelle, j'ai souhaité l'utiliser dans le cadre de ce projet.
+
+**Vue** m'a permis de développer rapidement les **composants** qui forment les différentes parties de l'interface de l'application. Ces derniers sont définis dans des fichiers dotés de l'extension `.vue`, offrant la possiblité de déterminer la **structure HTML**, le **comportement** et le **style** :
 
 ```vue
+// Hello.vue
 <template>
     <p class="bienvenue">Bonjour {{ nom }} !</p>
 </template>
@@ -248,7 +241,7 @@ export default {
 
 <Hello class="code-block"></Hello>
 
-L'une des forces de **Vue** et qu'il offre une possiblité de personnalisation totale.
+L'une des forces de **Vue** et qu'il offre une possiblité de **personnalisation totale.**
 
 Ainsi, de nombreux modules ont été développées pour venir ajouter des fonctionnalités.
 
@@ -274,11 +267,13 @@ const store = new Vuex.Store({
 })
 ```
 
-Dans notre cas, ce module a grandement facilité la **transmission de données inter-composant.**
+Dans notre cas, ce module a grandement facilité la **transmission de données inter-composant** puisque toutes les données liées aux couches et aux entités sont stockées dans le **store.**
 
 #### Leaflet
 
-Pour ce qui est de l'affichage de la carte et des entités, j'ai choisi d'utiliser **Leaflet**, une librairie JavaScript open-source pour créer des **cartes interactives**.
+<img src="../assets/images/logos/leaflet.png" title="Logo Leaflet.js" alt="logo-leaflet" data-align="center">
+
+Pour ce qui est de l'affichage de la carte et des entités, j'ai choisi d'utiliser **Leaflet**, une librairie JavaScript open-source pour créer des **cartes interactives**, voir la [documentation](https://leafletjs.com/examples/quick-start/).
 
 <Leaflet></Leaflet>
 
@@ -286,7 +281,7 @@ Ce choix s'est fait naturellement puisque **Leaflet** est de loin la meilleure l
 
 #### axios
 
-Puisqu'il est nécessaire de pouvoir communiquer avec les **Web services** par le biais de **requêtes HTTP**, j'ai décidé de me service **d'axios**, un **client HTTP** JavaScript **open-source** basé sur le principe de [Promise](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise).
+Puisqu'il est nécessaire de pouvoir communiquer avec les **Web services** par le biais de **requêtes HTTP**, j'ai décidé de me service **d'axios**, un **client HTTP** JavaScript **open-source** basé sur le principe de [Promise](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise), voir la [documentation](https://github.com/axios/axios).
 
 ```js
 import axios from 'axios'
@@ -304,7 +299,7 @@ Il est vrai que j'aurai pu utiliser [l'API XMLHttpRequest](https://developer.moz
 
 #### xml-js
 
-Cette librairie gère la conversion **XML vers JavaScript** et inversement. 
+Cette librairie gère la conversion **XML vers JavaScript** et inversement, voir la [documentation](https://www.npmjs.com/package/xml-js).
 
 ```js
 import * as convert from 'xml-js'
@@ -323,6 +318,7 @@ console.log(js)
      _text: 21 
    } 
 }
+*/
 ```
 
 ```js
@@ -356,7 +352,15 @@ Elle s'est avérée être un complément indispensable à **axios** puisque dans
 
 #### Autre
 
-J'ai également eu recours à d'autres librairies telles que **lodash** ou **proj4** pour quelques besoins précis. Ce ne sont donc pas des librairies majeures du projet, bien qu'elles jouent un rôle important.
+J'ai également eu recours à d'autres librairies telles que [Lodash](https://lodash.com/) ou [Proj4js](http://proj4js.org/) pour quelques besoins précis. 
+
+Ce ne sont donc pas des librairies majeures du projet, bien qu'elles jouent un rôle important.
+
+::: warning Note
+
+L'utilisation de technologies **open-source** est très importante puisqu'elle s'inscrit comme un des fondements de la philosophie du service SIG.
+
+:::
 
 ### Développement
 

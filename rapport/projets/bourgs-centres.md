@@ -306,6 +306,50 @@ Il est vrai que j'aurai pu utiliser [l'API XMLHttpRequest](https://developer.moz
 
 Cette librairie gère la conversion **XML vers JavaScript** et inversement. 
 
+```js
+import * as convert from 'xml-js'
+
+const xml = `<Name>Hugo</Name>
+             <namespace:Age>21</bar:Age>`
+const options = { compact: true }
+const js = convert.xml2js(xml, options)
+console.log(js)
+/*
+{ 
+  Name: { 
+    _text: "Hugo" 
+   }, 
+   namespace:Age: { 
+     _text: 21 
+   } 
+}
+```
+
+```js
+import * as convert from 'xml-js'
+
+const js = {
+    _declaration: {
+        _attributes: { version: "1.0", encoding: "utf-8"}
+    },
+    rappel: {
+        _attributes: { importance: "haute" },
+        mission: { _text: "Apprendre Vue.js" },
+        date: { _text: "Maintenant !" }
+    }
+}
+const options = { compact: true }
+const xml = convert.js2xml(js, options)
+console.log(xml)
+/*  
+    <?xml version="1.0" encoding="utf-8"?>
+    <rappel importance="haute">
+        <mission>Apprendre Vue.js</mission>
+        <date>Maintenant !</date>
+    </rappel>
+*/
+```
+
 Elle s'est avérée être un complément indispensable à **axios** puisque dans le cas de **requêtes POST**, les **flux WFS** n'accèptent que des données au **format XML.**
 
 **xml-js** m'a donc grandement facilité la construction du **corps** de ces requêtes.

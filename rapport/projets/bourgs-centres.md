@@ -200,23 +200,109 @@ Les données sont alors **immédiatement disponibles** via les flux WMS et WFS (
 
 ## Côté client
 
-persistence instantanée (possible de modifier un élément tout juste inséré sans refresh)
+Une fois la partie serveur implémentée, j'ai pu me consacrer au développement de **l'application client.**
 
+Pour commencer, je présenterai les **principales technologies** auxquelles j'ai pu avoir recours, en justifiant leur intêret dans ce projet.
 
+Enfin, je reviendrai en détail sur le **développement** de l'application, en illustrant les explications à l'aide **d'extraits de code.**
 
 ### Choix des technologies
 
-Liberté
+En ce qui concerne le choix du **nouvel environnement technique**, j'ai eu l'immense opportunité de **choisir** les technologies avec lesquelles je souhaitais travailler.
+
+Ainsi, j'ai décidé de choisir des technologies que je connaissais de part ma formation en **Lience Professionnelle** ou de part ma **veille technologique** personnelle, mais que je ne maitrisais pas.
+
+J'ai fait ce choix en étant convaincu que travailler sur un projet tel que celui-ci serait le meilleur moyen de **monter en compétences**, que ce soit au niveau de ces outils ou plus généralement sur la **prise en main** de nouvelles technologies.
 
 #### Vue.js
 
-**vuex**
+**Vue** est [framework](https://fr.wikipedia.org/wiki/Framework) **JavaScript** open-source conçu pour constuire des **interfaces utilisateur**.
+
+L'ayant découvert et apprécié au cours de ma formation en Licence Professionnelle, j'ai souhaité l'utiliser dans le cadre du projet **Bourgs-Centres.**
+
+**Vue** m'a permis de développer les **composants** qui forment les différentes parties de l'interface de l'application. Ces derniers sont définis dans des fichiers dotés de l'extension `.vue`, offrant la possiblité de déterminer la **structure HTML**, le **comportement** et le **style** :
+
+```vue
+<template>
+    <p class="bienvenue">Bonjour {{ nom }} !</p>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            nom: "Vue"
+        }
+    }
+}
+</script>
+
+<style scoped>
+.bienvenue {
+    text-align: center;
+    font-size: 2em;
+    color: #A2A2A2;
+}
+</style>
+```
+
+<Hello class="code-block"></Hello>
+
+L'une des forces de **Vue** et qu'il offre une possiblité de personnalisation totale.
+
+Ainsi, de nombreux modules ont été développées pour venir ajouter des fonctionnalités.
+
+C'est le cas de **Vuex**, un module qui permet de gérer l'état (**state**) de nos applications, voir la [documentation](https://vuex.vuejs.org/).
+
+**Vuex** crée un **store**, à partir duquel on peut définir un **état initial** et des méthodes permettant de **changer** cet état. Il est alors possible d'accéder à l'état du **store** et à ses méthodes depuis n'importe quel **composant** ou **fichier** JavaScript.
+
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+    }
+  }
+})
+```
+
+Dans notre cas, ce module a grandement facilité la **transmission de données inter-composant.**
 
 #### Leaflet
 
+Pour ce qui est de l'affichage de la carte et des entités, j'ai choisi d'utiliser **Leaflet**, une librairie JavaScript open-source pour créer des **cartes interactives**.
+
+Ce choix s'est fait naturellement puisque **Leaflet** est de loin la meilleure librairie de cartographie **open-source** pour JavaScript, notamment grâce à son API très **complète** et **simple** à prendre en main.
+
 #### axios
 
+Puisqu'il est nécessaire de pouvoir communiquer avec les **Web services** par le biais de **requêtes HTTP**, j'ai décidé de me service **d'axios**, un **client HTTP** JavaScript **open-source** basé sur le principe de [Promise](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise).
+
+Il est vrai que j'aurai pu utiliser [l'API XMLHttpRequest](https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest) et créer mes propres fonctions, mais j'ai souhaité gagner du temps sur cette partie étant donné qu'il y avait déjà une charge de travail importante à fournir.
+
+#### xml-js
+
+Cette librairie gère la conversion **XML vers JavaScript** et inversement. 
+
+Elle s'est avérée être un complément indispensable à **axios** puisque dans le cas de **requêtes POST**, les **flux WFS** n'accèptent que des données au **format XML.**
+
+**xml-js** m'a donc grandement facilité la construction du **corps** de ces requêtes.
+
+#### Autre
+
+J'ai également eu recours à d'autres librairies telles que **lodash** ou **proj4** pour quelques besoins précis. Ce ne sont donc pas des librairies majeures du projet, bien qu'elles jouent un rôle important.
+
 ### Développement
+
+Cette section présente la majeure partie du travail qui a été effecuté sur ce projet, puisque la totalité de l'application a été développé à partir de zéro.
 
 ## Confinement et télétravail
 

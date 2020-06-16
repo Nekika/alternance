@@ -106,7 +106,7 @@ La priorité étant d'implémenter les fonctionnalités minimales, il n'y a donc
 
 :::
 
-### Interface
+### Interface utilisateur
 
 Elle peut être découpée en 3 éléments :
 
@@ -115,6 +115,16 @@ Elle peut être découpée en 3 éléments :
 * **Menu** : présentant la **Liste des couches** qui permet de visualiser celles qui sont disponibles, cet élément intègre également une **Légende** associée à chaque couche.
 
 * **Formulaire** : c'est l'élément qui offre à l'utilisateur la possibilité de saisir des données.
+
+**Schéma** :
+
+<Schema></Schema>
+
+::: warning Note
+
+Les éléments **Légende** et **Formulaire** sont rétractables et ne sont pas affichés au lancement de l'application.
+
+::: 
 
 ### Fonctionnement
 
@@ -525,11 +535,9 @@ Toutes les requêtes HTTP sont effectuées en **parallèle** à l'aide de la mé
 
 #### Affichage de l'interface
 
-Après la phase de récupération des données, l'initialisation se termine par l'affichage de **l'interface utilisateur.** Cette dernière peut être schématisée de cette manière :
+Après la phase de récupération des données, l'initialisation se termine par l'affichage de **l'interface utilisateur.** 
 
-Les trois composants principaux (cf. [#Interface](/projets/bourgs-centres/html#interface)) se chargent de récupérer les données depuis le **store** afin de les **transmettre** aux sous-composants, permettant ainsi l'affichage des informations récupérées plus tôt.
-
-
+Les trois composants principaux (cf. [#Interface](/projets/bourgs-centres.html#interface)) se chargent de récupérer les données depuis le **store** afin de les **transmettre** aux sous-composants, permettant ainsi l'affichage des informations récupérées plus tôt.
 
 ## Confinement et télétravail
 

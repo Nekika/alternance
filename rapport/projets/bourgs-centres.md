@@ -190,13 +190,17 @@ Lorsque la configuration est terminée, il suffit d'enregister les modifications
 
 Les données sont alors **immédiatement disponibles** via les flux WMS et WFS (cf. la [présentation de QGIS Server](/prerequis/qgis-server.html#flux-wms-wfs)).
 
-## Côté client
+## Développement
 
 Une fois la partie serveur implémentée, j'ai pu me consacrer au développement de **l'application client.**
+
+Cette section présente la majeure partie du travail qui a été effecuté sur ce projet, puisque la totalité de l'application a été développé à partir de zéro.
 
 Pour commencer, je présenterai les **principales technologies** auxquelles j'ai pu avoir recours, en justifiant leur intêret dans ce projet.
 
 Enfin, je reviendrai en détail sur le **développement** de l'application, en illustrant les explications à l'aide **d'extraits de code.**
+
+L'ordre de la présentation se base sur un cas d'utilisation classique de l'application, tel que décrit dans la section [#Fonctionnement](/projets/bourgs-centres.html#fonctionnement).
 
 ### Environnement technologique
 
@@ -346,7 +350,7 @@ console.log(xml)
 */
 ```
 
-Elle s'est avérée être un complément indispensable à **axios** puisque dans le cas de **requêtes POST**, les **flux WFS** n'accèptent que des données au **format XML.**
+Elle s'est avérée être un complément indispensable à **axios** puisque dans le cas de requêtes **POST**, les flux WFS n'accèptent que des données au **format XML.**
 
 **xml-js** m'a donc grandement facilité la construction du **corps** de ces requêtes.
 
@@ -362,9 +366,170 @@ L'utilisation de technologies **open-source** est très importante puisqu'elle s
 
 :::
 
-### Développement
+### Strucutre
 
-Cette section présente la majeure partie du travail qui a été effecuté sur ce projet, puisque la totalité de l'application a été développé à partir de zéro.
+Le répertoire du projet suit la **structure classique** d'une application **Vue** :
+
+```bash
+-- bourgs-centres
+  |-- public
+  |-- src
+    |-- API
+    |-- assets
+    |-- components
+    |-- config
+    |-- models
+    |-- store
+      |-- modules
+    |-- tools
+    |-- App.vue
+    |-- main.js
+```
+
+* `bourgs-centres` : racine du projet.
+
+* `public` : contient des fichiers statiques tels que `index.html` ou `favicon.ico`.
+
+* `src/API` : ensemble d'outils facilitant la communication avec les flux WMS/WFS.
+
+* `src/assets` : feuiles de style, images, vidéos et autres ressources.
+
+* `src/components` : le répertoire dans lequel on définit les composants (`*.vue`).
+
+* `src/config` : éléments de configuration (URL d'API, token, etc.)
+
+* `src/models` : classes permettant de manipuler les données plus facilement.
+
+* `src/store` : le répertoire lié à l'utilisation de **Vuex**.
+
+* `src/store/modules` : des modules permettant de découper le **store** en plusieurs parties.
+
+* `src/tools` : fonctions utiles qui facilitent certains traitements.
+
+* `src/App.vue` : composant principal de l'application.
+
+* `src/main.js` : point d'entrée de l'application.
+
+### Initialisation
+
+L'initialisation regroupe les phases de **démarrage**, de **récupération des données** et **d'affichage de l'interface.**
+
+En attendant que toutes ses tâches soient réalisées, l'utilisateur peut appercevoir une **animation de chargement** le laissant comprendre que l'application est entrain de charger :
+
+<Loader></Loader>
+
+::: warning Note
+
+La durée moyenne de ce chargement est relativementement courte (maximum 2 secondes), il arrive même parfois que l'utilisateur n'ait pas le temps d'appercevoir l'animation.
+
+:::
+
+#### Démarrage
+
+Cette phase très courte instancie **Vue** au sein de notre application et permet entre autre d'afficher l'animation de chargement et d'intègrer un **store** créé à l'aide du module **Vuex** :
+
+```js
+// main.js
+
+import Vue from 'vue'
+import App from '@/App'
+import store from '@/store'
+
+new Vue({
+  store,
+  render: h => h(App),
+}).$mount('#app')
+```
+
+#### Récupération des données
+
+Dès lors que que la phase de démarrage et terminée, le composant principal de l'application envoie une instruction au **store** afin de lancer la phase de **récupération des données** :
+
+```vue
+// App.vue
+
+<template>
+  <Loader v-if="loading" />
+  <div v-else id="app">
+    <Menu />
+    <Map />
+    <Form v-if="formVisible" />
+  </div>
+</template>
+
+<script>
+  // [...]
+  methods: {
+    ...mapActions('layer', ['getLayers']),
+  },
+  mounted() {
+    this.getLayers()
+  }
+  // [...]
+}
+</script>
+```
+
+* `methods` : un objet permettant de défnir les méthodes utilisables par un composant, voir la [documentation](https://fr.vuejs.org/v2/guide/events.html).
+
+* `mapActions` : une fonction propre à **Vuex** qui permet de lier une **action du store** aux **méthodes d'un composant**.
+
+* `mounted` : une méthode liée au **cycle de vie** d'un composant. Elle est appelée lorsque le composant est **inséré** dans l'arborescence, voir la [documentation](https://fr.vuejs.org/v2/guide/instance.html#Diagramme-du-cycle-de-vie).
+
+* `this.getLayers` : la méthode liée depuis le module *layer* du **store**.
+
+Au sein du **store**, la méthode `getLayers` se charge d'effectuer des appels à des méthodes ayant recours à **axios** pour récupérer la **liste des couches** :
+
+```js
+// src/API/WFS.js
+
+async function fetchLayers() {
+    const url = `${baseUrl}&REQUEST=GetCapabilities`
+    const res = await axios.get(url)
+    return extractLayers(res.data)
+}
+```
+
+On effectue ensuite deux requêtes par couches, afin d'en récupérer les **styles** et la **liste des entités** existantes : 
+
+```js
+// src/API/WMS.js
+
+async function fetchStyles(layer) {
+    const url = `${baseUrl}&REQUEST=GetStyles&LAYERS=${layer}`
+    const res = await axios.get(url)
+    return extractStyles(res.data)
+}
+```
+
+```js
+// src/API/WFS.js
+
+async function fetchFeatures(layer) {
+    const url = `${baseUrl}&REQUEST=GetFeature&TYPENAME=${layer}&OUTPUTFORMAT=GEOJSON`
+    const res = await axios.get(url)
+    return res.data.features.map(f => {
+        f.coordinates = reverseCoordinates(f.coordinates)
+        return f
+    })
+}
+```
+
+Lorsque les données ont été récupérées, elles sont stockées dans le **store** afin d'être accessibles à n'importe quel endroit de l'application.
+
+::: warning Note
+
+Toutes les requêtes HTTP sont effectuées en **parallèle** à l'aide de la méthode `Promise.all()`, sans quoi le temps de chargement serait bien plus long, voir la [documentation](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Promise/all).
+
+:::
+
+#### Affichage de l'interface
+
+Après la phase de récupération des données, l'initialisation se termine par l'affichage de **l'interface utilisateur.** Cette dernière peut être schématisée de cette manière :
+
+Les trois composants principaux (cf. [#Interface](/projets/bourgs-centres/html#interface)) se chargent de récupérer les données depuis le **store** afin de les **transmettre** aux sous-composants, permettant ainsi l'affichage des informations récupérées plus tôt.
+
+
 
 ## Confinement et télétravail
 

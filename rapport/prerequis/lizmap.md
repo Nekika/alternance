@@ -10,7 +10,7 @@ title: Prérequis - Lizmap
 
 Conçu par [3Liz](https://3liz.com), une société française spécialisée dans les services autour des logiciels libres SIG, [Lizmap](https://3liz.com/lizmap.html) est **logiciel open-source** se présentant comme un **plugin QGIS** permettant de créer des **applications Web cartographiques**.
 
-<img src="../assets/images/logos/lizmap.png" title="Logo Lizmap" alt="logolizmap" data-align="center">
+<img src="../assets/images/logos/lizmap.png" title="Logo Lizmap" alt="logo-lizmap" data-align="center">
 
 L'idée est de **permettre à des utilisateurs de QGIS** n'ayant pas ou peu de notions de développement Web de pouvoir **créer et deployer simplement une application Web cartographique** à partir d'un projet QGIS.
 

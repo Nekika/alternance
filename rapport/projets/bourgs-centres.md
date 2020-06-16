@@ -182,7 +182,7 @@ Les couches au sein du groupe **Catégories** sont toutes des couches de **type 
 
 Sur la capture d'écran au-dessus, on peut distinguer que chaque couche possède sa propre liste de **marqueurs**, qu'elle attribue à ses entités en fonction de la **valeur** contenue dans leur champ *type*.
 
-Par exemple, dans le cas de la couche Éducation, les valeurs du champ *type* peuvent être :  `collège`, `crèche`, `école maternelle`, `école primaire` ou `lycée`.
+Par exemple, dans le cas de la couche *Éducation*, les valeurs du champ *type* peuvent être :  `collège`, `crèche`, `école maternelle`, `école primaire` ou `lycée`.
 
 Chaque entité se verra donc attribuer le marqueur correspondant à la valeur contenue dans ce champ (cf. la [présentation de QGIS](/prerequis/qgis.html#styles)).
 
@@ -539,12 +539,60 @@ Après la phase de récupération des données, l'initialisation se termine par 
 
 Les trois composants principaux (cf. [#Interface](/projets/bourgs-centres.html#interface)) se chargent de récupérer les données depuis le **store** afin de les **transmettre** aux sous-composants, permettant ainsi l'affichage des informations récupérées plus tôt.
 
-## Confinement et télétravail
+### TODO
 
-Pause forcée (VPN) = 3 semaines, Docker (recommencer le travail d'admin avant de reprendre le dev) = 1 semaine, au total 4 semaines de stand-by pour le dev
+Ajouter ces parties dans le rapport :
+
+* Interactions utilisateur
+  
+  * Légende
+  
+  * Création des représentations
+  
+  * Formulaire (description de la couche)
+
+* Transactions
+  
+  * Construction du body (xml-js)
+  
+  * Envoie et Réponse
 
 ## À venir
 
-Gestion des utilisateurs
+### Démonstration
+
+Démoinstration de l'utilisation de l'application aux personnes en charge du projet.
+
+### Gestion des utilisateurs
+
+* Système de gestion des comptes utilisateurs
+
+* Groupes utilisateurs
+
+* Restreindre les données aux groupes associés
+
+### Déploiement
+
+Réaliser un premier déploiement avant la fin de l'apprentissage afin d'avoir des premiers retours et apporter des corrections.
+
+## Confinement et télétravail
+
+Le développement de ce projet s'est retrouvé quelques peu bousculé par l'apparition du **COVID-19.**
+
+En effet, avec les mesures prises par le gouvernement, je me suis retrouvé contraint de devoir travailler depuis la maison pedant près de **2 mois.**
+
+Malheureusement, les premières semaines de confinement se sont transformées en **pause forcée** puisque le **Conseil Départemental** a priorisé, à juste titre, la continuité des **services essentiels.**
+
+De ce fait, je n'ai pas pu avoir accès au VPN de mon lieu de travail avant la **4ème semaine** de confinement. Quand bien même, les conditions de travail n'était pas très adapté et il m'était difficile de poursuivre mon avancée de cette manière.
+
+Afin de pouvoir reprendre mon travail rapidement et sous l'accord de mon maître d'apprentissage, je me suis recréé un **environnement de travail virtuel local** grâce à [Docker](https://docker.com). Ce travail **d'administration** et de **configuration serveur** a pris au total **une semaine.**
+
+Au total, ces 4 semaines ne se sont pas avérées être un handicap puisque j'ai réussi à rattraper mon retard en gagnant du temps sur des tâches que j'avais imaginé plus longues.
 
 ## Conclusion intermédiaire
+
+Je suis pour l'instant très satisfait de l'avancée de ce projet.
+
+La partie fonctionnelle est quasiment terminée, il n'y a plus que quelques erreurs mineures à corriger avant d'entamer le mise en page.
+
+Ce projet s'avère être très formateur car il me permet de découvrir et maîtiser de nouvelles technologies, mais également de monter en compétence en terme d'organisation et de communication.

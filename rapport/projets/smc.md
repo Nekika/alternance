@@ -153,6 +153,22 @@ Dans notre cas, une **structure simple** suffira puisque le plugin ne contiendra
 
 Il faut permettre à l'utilisateur de **gagner du temps** en obtenant **immédiatement** une sélection de **toutes les entités** présentes dans l'emprise, tout en effectuant **le moins d'action possible**.
 
+## Solution proposée
+
+Il s'avère qu'au cours de mes quelques mois au sein du service SIG, j'ai eu l'occasion de travaillé deux fois sur ce projet.
+
+En effet, au mois d'octobre j'ai développé et livré une première version de l'outil afin de répondre au besoin primaire des utilisateurs.
+
+Bien que cette solution ait fait l'affaire pendant quelques mois, avant et après la période de confinement causée par la crise sanitaire du COVID-19, les utilisateurs m'ont remonté des idées d'amélioration au mois de juillet.
+
+Je me suis donc chargé de développer une nouvelle version du plugin afin de répondre aux nouveaux besoins des utilisateurs.
+
+### Première version
+
+L'idée est de fournir un outil capable d'effectuer la sélection **en un seul clic** :
+
+<img title="" src="../assets/images/smc/preview.gif" alt="smc_preview" data-align="center">
+
 ::: warning Note
 
 Les utilisateurs finaux sélectionnent les entités de toutes les couches du projet, sauf une (la couche *Communes*).
@@ -161,19 +177,13 @@ Il n'était alors pas nécessaire de fournir une interface utilisateur permettan
 
 :::
 
-## Solution proposée
-
-L'idée est de fournir un outil capable d'effectuer la sélection **en un seul clic** :
-
-<img title="" src="../assets/images/smc/preview.gif" alt="smc_preview" data-align="center">
-
-### Structure
+#### Structure
 
 L'architecture est très **simplifiée** puisque d'une part il n'y a que quelques instructions à fournir, et d'autre part il n'y a pas besoin d'interface utilisateur :
 
 ```shell
 -- $REPERTOIRE_QGIS_PLUGINS
-  |-- SMC
+  |-- SMC/
     |-- __init.py__
     |-- icon.png
     |-- metadata.txt
@@ -193,7 +203,7 @@ On remarque tout de même la présence de nouveaux fichiers :
 
 * `tools.py` : des fonctions dont la présence au sein du coeur du plugin n'était pas pertinente.
 
-### Code
+#### Code
 
 L'utilisation de [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS rend le code **simple à lire et à comprendre** même pour quelqu'un n'ayant jamais manipuler Python. Je vais donc me permettre de détailler le fonctionnement du plugin.
 
@@ -276,6 +286,114 @@ def select_features_in_area(layers, area):
 Cette fonction très simple fait appel à la méthode `selectByRect` de la classe [QgsVectorLayer](https://qgis.org/pyqgis/master/core/QgsVectorLayer.html#qgis.core.QgsVectorLayer.selectByRect) et elle permet, à partir d'une couche vectorielle, de **sélectionner toutes les entités contenues au sein d'un rectangle**.
 
 Dans notre cas, le rectangle n'est autre que **l'emprise** réglée par l'utilisateur.
+
+### Feedback
+
+Après quelques mois d'utilisation, les utilisateurs de l'extension m'ont fait quelques retours constructifs quant à l'utilisation réelle de l'extension.
+
+#### Point positif
+
+L'extension répond parfaitement au besoin primaire des utilisateurs et leur permet de gagner un temps précieux.
+
+#### Points négatifs
+
+* **Sélection trop importante** : la plupart du temps, les utilisateurs ne souhaitent sélectionner des entités qu'au sein d'une, deux voir trois communes. La sélection rectangulaire provque donc une sélection d'un grand nombre d'entités inutiles.
+* **Fonds de plans** : il peut arriver que les utilisateurs aient besoin de sélectionner les fonds de plans. La première version du plugin ne permet absolument pas de le faire.
+
+### Deuxième version
+
+Afin de répondre aux nouveaux besoins des utilisateurs, il a été nécessaire de repenser totalement l'utilisation du plugin.
+
+Très vite, la nécessité de fournir une interface homme-machine est apparue, car les nouvelles fonctionnalités nécessecitent obligatoirement des actions de la part de l'utilisateur.
+
+Bien que le fonctionnement de l'extension soit plus plus complexe, l'idée derrière reste similaire à celle de la première version :
+
+1. **Emprise** : L'utilisateur règle l'emprise sur les communes qui l'intéressent
+2. **Interface utilisateur** : Au lancement du plugin, une interface utilisateur listant ces communes apparaît
+3. **Actions utilisateur** : L'utilisateur peut alors sélectionner les communes sur lesquelles il souhaite effectuer la sélection. Une case à cocher permet d'indiquer à l'extension si elle doit intégrer les fonds de plans dans la sélection
+4. **Lancement de la sélection** : Un bouton *Valider* permet de lancer la sélection
+
+#### Structure
+
+Au niveau de l'organisation, cette nouvelle version a nécessité le développement de plusieurs modules auxiliaires permettant de rendre le code plus sain : 
+
+```shell
+-- $REPERTOIRE_QGIS_PLUGINS
+  |-- SMC/
+    |-- utils/
+      |-- __init.py__
+      |-- ui.py
+    |-- __init.py__
+    |-- icon.png
+    |-- metadata.txt
+    |-- pb_tool.cfg
+    |-- smc.py
+    |-- README.md
+    |-- resources.py
+    |-- resources.qrc
+    |-- tools.py
+```
+
+On remarque ici l'apparition du sous-répertoire `utils` qui contient le fichier `ui.py`. Ce dernier contient des fonctions qui seront utiles pour la construction de l'interface utilisateur.
+
+La grande partie du fonctionnement de l'extension se trouve toujours au sein du fichier `smc.py`.
+
+#### Code
+
+Nous nous contenterons ici de présenter les différences majeures entre la première et la deuxième version.
+
+##### Interface utilisateur
+
+Afin de rendre possible l'interaction entre l'utilisateur et l'extension j'ai eu recours à PyQt5, la version Python de Qt : un célebre ensemble de librairies C++.
+
+J'ai commencé par concevoir l'interface à l'aide de Qt Designer, un logiciel permettant de créer des interfaces utilisateurs utilisables avec Qt.
+
+Ensuite, au sein du fichier `utils/ui.py`, j'ai créé des fonctions facilitant le remplissage de la table listant les communes :
+
+```python
+from qgis.PyQt.QtWidgets import QTableWidgetItem
+from qgis.PyQt.QtCore import Qt
+
+def create_label(text):
+    item = QTableWidgetItem(text)
+    item.setFlags(Qt.NoItemFlags)
+    item.setTextAlignment(Qt.AlignCenter)
+    return item
+
+def create_checkbox():
+    item = QTableWidgetItem()
+    item.setFlags(Qt.ItemIsUserCheckable | Qt.ItemIsEnabled)
+    item.setCheckState(Qt.Unchecked)
+    return item
+
+def create_rows(communes):
+    rows = []
+    for c in communes:
+        label, checkbox = create_label(c.attribute("nom")), create_checkbox()
+        rows.append(dict(label=label, checkbox=checkbox))
+    return rows
+```
+
+* **`create_label()`** : crée un objet `QTableWidgetItem` qui sera utilisé pour afficher le nom d'une commune
+* **`create_checkbox()`** : crée un object `QTableWidgetItem` qui sera utilisé pour afficher une case à cocher
+* **`create_rows()`** : à partir d'une liste de communes, crée une liste d'objets représentant une ligne à insérer dans la table listant les communes
+
+
+Au sein du fichier `smc.py`, ces fonctions s'avèrent utiles afin de remplir la table des communes visibles : 
+
+```python
+ def fill_table(self, communes):
+      rows, table = sorted(ui.create_rows(communes), key=lambda k: k["label"]), self.dlg.tw_communes
+      table.setRowCount(len(rows))
+      for index, row in enumerate(rows):
+          table.setItem(index, 0, row["label"])
+          table.setItem(index, 1, row["checkbox"])
+```
+
+##### Sélection
+
+Lorsque l'utilisateur a fait ses choix et qu'il décide de lancer la sélection, le fonctionnement diffère légèrement de la première version :
+
 
 ## Conclusion
 

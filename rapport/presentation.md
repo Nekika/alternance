@@ -67,13 +67,13 @@ Au sein du service des **Coopérations territoriales**, le service SIG est direc
 
 Placé sous la responsabilité de **Mme Isabelle Arts**, le service est actuellement composé de 4 personnes :
 
-* **Hervé Vitoux** - *Géomaticien et chef de projet SIG*
+* **Hervé Vitoux** - *Chef de projet SIG*
 
-* **Ingrid Leblanc** - *Géomaticienne et formatrice SIG*
+* **Ingrid Leblanc** - *Administratrice fonctionnelle SIG et Formatrice SIG*
 
-* **Mohammed Boujjia** - *Géomaticien et administrateur SIG*
+* **Mohammed Boujjia** - *Administrateur fonctionnel SIG*
 
-* **Hugo Jahnke** - *Apprenti développeur web*
+* **Hugo Jahnke** - *Apprenti développeur Web*
 
 ### Objectif
 

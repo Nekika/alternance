@@ -1,7 +1,7 @@
 ---
-prev: /projets/modal
-next: /projets/bourgs-centres
-title: Projets - SMC
+prev: /projets-annexes/modal
+next: /cartogis54/
+title: Projets annexes - SMC
 ---
 
 # SMC (Sélection Multi Couches)

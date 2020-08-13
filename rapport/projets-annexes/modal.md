@@ -1,7 +1,7 @@
 ---
-prev: /projets/
-next: /projets/smc
-title: Projets - Modal
+prev: /projets-annexes/
+next: /projets-annexes/smc
+title: Projets annexes - Modal
 ---
 
 # Modal

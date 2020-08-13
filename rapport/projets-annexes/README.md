@@ -1,10 +1,10 @@
 ---
 prev: /prerequis/lizmap
-next: /projets/modal
+next: /projets-annexes/modal
 sidebar: false
 ---
 
-# Projets
+# Projets annexes
 
 Cette année au sein du service SIG m'a permis de travailler sur plusieurs projets, m'offrant l'opportunité de manipuler différentes téchnologies telles que [Vue.js](https://vuejs.org) ou [Python](https://python.org).
 
@@ -25,9 +25,3 @@ Ce premier projet m'a permis de prendre en main et customiser **Lizmap** afin de
 ## [SMC (Sélection Multi Couches)](/projets/smc)
 
 J'ai été chargé de créer un plugin pour **QGIS** permettant de sélectionner instantanément toutes les entités visibles dans l'interface.
-
-## [Bourgs-Centres](/projets/bourgs-centres)
-
-**Bourgs-Centres** est le plus gros projet sur lequel j'ai eu l'occasion de travailler.
-
-Il s'agit d'une application Web de cartographie destinée aux maires de certaines communes au sein du département de Meurthe-et-Moselle.

@@ -1,7 +1,7 @@
 ---
-prev: /projets/smc
+title: CartoGIS54 - Bourgs-Centres
+prev: /cartogis54/plugin
 next: /liens
-title: Projets - Bourgs-Centres
 ---
 
 # Bourgs-Centres
@@ -561,7 +561,7 @@ Ajouter ces parties dans le rapport :
 
 ### Démonstration
 
-Démoinstration de l'utilisation de l'application aux personnes en charge du projet.
+Démonstration de l'utilisation de l'application aux personnes en charge du projet.
 
 ### Gestion des utilisateurs
 
@@ -587,7 +587,7 @@ De ce fait, je n'ai pas pu avoir accès au VPN de mon lieu de travail avant la *
 
 Afin de pouvoir reprendre mon travail rapidement et sous l'accord de mon maître d'apprentissage, je me suis recréé un **environnement de travail virtuel local** grâce à [Docker](https://docker.com). Ce travail **d'administration** et de **configuration serveur** a pris au total **une semaine.**
 
-Au total, ces 4 semaines ne se sont pas avérées être un handicap puisque j'ai réussi à rattraper mon retard en gagnant du temps sur des tâches que j'avais imaginé plus longues.
+Au total, ces **4 semaines** ne se sont pas avérées être un handicap puisque j'ai réussi à rattraper mon retard en gagnant du temps sur des tâches que j'avais imaginé plus longues.
 
 ## Conclusion intermédiaire
 

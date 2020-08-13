@@ -1,5 +1,5 @@
 ---
-prev: /projets/smc
+prev: /cartogis54/bourgs-centres
 ---
 
 # Liens

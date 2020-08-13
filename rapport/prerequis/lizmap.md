@@ -1,6 +1,6 @@
 ---
 prev: /prerequis/qgis-server
-next: /projets/
+next: /projets-annexes/
 title: Prérequis - Lizmap
 ---
 

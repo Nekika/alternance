@@ -7,25 +7,25 @@ sidebar: false
 
 # Prérequis
 
-La partie [Projets](/projets/) présente de façon technique le travail effectué au cours de mon apprentissage au sein du service SIG.
+Les sections [Projets annexes](/projets-annexes/) et [CartoGIS54](/cartogis54/) **présentent de façon technique le travail effectué** au cours de mon apprentissage au sein du **service SIG**.
 
-Il est donc fréquent que certaines notions liées à la cartographie et aux SIG soit utilisées afin d'appuyer des explications.
+Il est donc fréquent que certaines notions liées à la **cartographie** et aux **SIG** soit utilisées afin **d'appuyer des explications**.
 
-Afin de permettre à n'importe qui de suivre la présentation des différents projets, j'ai jugé nécessaire d'intégrer des modules permettant de se sensibiliser rapidement aux notions abordées et aux outils utilisés.
+Afin de permettre à n'importe qui de suivre la présentation des différents projets, j'ai jugé nécessaire d'intégrer des **modules** permettant de se **sensibiliser rapidement aux notions abordées et aux outils utilisés**.
 
-La consultation de ces modules n'est donc pas obligatoire mais elle est fortement recommandées si :
+La consultation de ces modules n'est donc pas obligatoire mais elle est **fortement recommandée** si :
 
-* Vous n'avez aucune idée de ce qu'est un SIG.
+* *Vous n'avez aucune idée de ce qu'est un SIG.*
 
-* Vous ignorez ce que sont des flux WMS/WFS.
+* *Vous ignorez ce que sont des flux WMS/WFS.*
 
-* Vous souhaitez découvrir le fonctionnement de QGIS Server et Lizmap.
+* *Vous souhaitez découvrir le fonctionnement de QGIS Server et Lizmap.*
 
-* Vous êtes effrayé par les termes *emprise* ou *couche vectorielle*.
+* *Vous êtes effrayé par les termes ***emprise*** ou ***couche vectorielle***.*
 
 ## Modules
 
-Il est conseillé de consulter les modules dans l'ordre puisque certaines notions d'un modules dépendent de celles abordées dans un précédent module.
+Il est conseillé de consulter les modules dans l'ordre puisque certaines notions d'un module dépendent de celles abordées dans un précédent module.
 
 ### [QGIS](/prerequis/qgis)
 

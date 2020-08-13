@@ -4,39 +4,75 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Accueil | Suivi d&#39;alternance</title>
-    <meta name="generator" content="VuePress 1.5.0">
+    <meta name="generator" content="VuePress 1.5.2">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <meta name="description" content="Ce rapport présentera l'institution et le service au sein desquels l'alternance a été réalisée.">
-    <link rel="preload" href="/assets/css/0.styles.55ffc91a.css" as="style"><link rel="preload" href="/assets/js/app.0235dcb5.js" as="script"><link rel="preload" href="/assets/js/2.1039ffb8.js" as="script"><link rel="preload" href="/assets/js/15.5f02199a.js" as="script"><link rel="prefetch" href="/assets/js/10.a81034b2.js"><link rel="prefetch" href="/assets/js/11.927dbb70.js"><link rel="prefetch" href="/assets/js/12.767f95bf.js"><link rel="prefetch" href="/assets/js/13.40abae0f.js"><link rel="prefetch" href="/assets/js/14.4c2ee264.js"><link rel="prefetch" href="/assets/js/16.b1c40f1a.js"><link rel="prefetch" href="/assets/js/17.7d0df2b4.js"><link rel="prefetch" href="/assets/js/18.5ee054b0.js"><link rel="prefetch" href="/assets/js/19.74cb0c02.js"><link rel="prefetch" href="/assets/js/3.af4636dd.js"><link rel="prefetch" href="/assets/js/4.79bbb85c.js"><link rel="prefetch" href="/assets/js/5.7a817b10.js"><link rel="prefetch" href="/assets/js/6.aefc178e.js"><link rel="prefetch" href="/assets/js/7.ce805b8b.js"><link rel="prefetch" href="/assets/js/8.ffb616a8.js"><link rel="prefetch" href="/assets/js/9.56d520a4.js">
-    <link rel="stylesheet" href="/assets/css/0.styles.55ffc91a.css">
+    <link rel="preload" href="/assets/css/0.styles.95c70d13.css" as="style"><link rel="preload" href="/assets/js/app.95b712ba.js" as="script"><link rel="preload" href="/assets/js/2.823c70a3.js" as="script"><link rel="preload" href="/assets/js/15.1e34ef7d.js" as="script"><link rel="prefetch" href="/assets/js/10.bc8f9867.js"><link rel="prefetch" href="/assets/js/11.263d977d.js"><link rel="prefetch" href="/assets/js/12.cef03993.js"><link rel="prefetch" href="/assets/js/13.9fae9039.js"><link rel="prefetch" href="/assets/js/14.3914dd35.js"><link rel="prefetch" href="/assets/js/16.9dc726b6.js"><link rel="prefetch" href="/assets/js/17.2e2d2465.js"><link rel="prefetch" href="/assets/js/18.194d7317.js"><link rel="prefetch" href="/assets/js/19.2aec4bc1.js"><link rel="prefetch" href="/assets/js/20.743472b5.js"><link rel="prefetch" href="/assets/js/21.1ef79ede.js"><link rel="prefetch" href="/assets/js/22.cfa4da44.js"><link rel="prefetch" href="/assets/js/3.855c304c.js"><link rel="prefetch" href="/assets/js/4.871bcf60.js"><link rel="prefetch" href="/assets/js/5.f5201cba.js"><link rel="prefetch" href="/assets/js/6.e842a923.js"><link rel="prefetch" href="/assets/js/7.f6f50e7f.js"><link rel="prefetch" href="/assets/js/8.09563207.js"><link rel="prefetch" href="/assets/js/9.ac035cd6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.95c70d13.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" aria-current="page" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">Suivi d'alternance</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   Accueil
 </a></div><div class="nav-item"><a href="/presentation.html" class="nav-link">
   Présentation
-</a></div><div class="nav-item"><a href="/prerequis/" class="nav-link">
-  Prérequis
-</a></div><div class="nav-item"><a href="/projets/" class="nav-link">
-  Projets
-</a></div><div class="nav-item"><a href="/liens.html" class="nav-link">
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Prérequis" class="dropdown-title"><span class="title">Prérequis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/prerequis/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/qgis.html" class="nav-link">
+  QGIS
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/qgis-server.html" class="nav-link">
+  QGIS Server
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/lizmap.html" class="nav-link">
+  Lizmap
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Projets annexes" class="dropdown-title"><span class="title">Projets annexes</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projets-annexes/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/projets-annexes/modal.html" class="nav-link">
+  Modal
+</a></li><li class="dropdown-item"><!----> <a href="/projets-annexes/smc.html" class="nav-link">
+  SMC
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CartoGIS54" class="dropdown-title"><span class="title">CartoGIS54</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cartogis54/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/client.html" class="nav-link">
+  Application client
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/plugin.html" class="nav-link">
+  Plugin QGIS
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/bourgs-centres.html" class="nav-link">
+  Bourgs-Centres
+</a></li></ul></div></div><div class="nav-item"><a href="/liens.html" class="nav-link">
   Liens
 </a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
   Accueil
 </a></div><div class="nav-item"><a href="/presentation.html" class="nav-link">
   Présentation
-</a></div><div class="nav-item"><a href="/prerequis/" class="nav-link">
-  Prérequis
-</a></div><div class="nav-item"><a href="/projets/" class="nav-link">
-  Projets
-</a></div><div class="nav-item"><a href="/liens.html" class="nav-link">
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Prérequis" class="dropdown-title"><span class="title">Prérequis</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/prerequis/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/qgis.html" class="nav-link">
+  QGIS
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/qgis-server.html" class="nav-link">
+  QGIS Server
+</a></li><li class="dropdown-item"><!----> <a href="/prerequis/lizmap.html" class="nav-link">
+  Lizmap
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Projets annexes" class="dropdown-title"><span class="title">Projets annexes</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/projets-annexes/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/projets-annexes/modal.html" class="nav-link">
+  Modal
+</a></li><li class="dropdown-item"><!----> <a href="/projets-annexes/smc.html" class="nav-link">
+  SMC
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="CartoGIS54" class="dropdown-title"><span class="title">CartoGIS54</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/cartogis54/" class="nav-link">
+  À propos
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/client.html" class="nav-link">
+  Application client
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/plugin.html" class="nav-link">
+  Plugin QGIS
+</a></li><li class="dropdown-item"><!----> <a href="/cartogis54/bourgs-centres.html" class="nav-link">
+  Bourgs-Centres
+</a></li></ul></div></div><div class="nav-item"><a href="/liens.html" class="nav-link">
   Liens
-</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Accueil</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="accueil"><a href="#accueil" class="header-anchor">#</a> Accueil</h1> <p>Ce site est un support me permettant de rendre compte du travail effectué lors de mon apprentissage au sein du service SIG du Conseil Départemental de Meurthe-et-Moselle, à l'occasion de mon année d'étude en Licence Professionnel CIASIE à l'IUT Nancy-Charlemagne.</p> <p>Ce rapport peut être découpé en deux parties : <a href="/presentation">Présentation</a> et <a href="/projets/">Projets</a>.</p> <p>La partie <a href="/presentation">Présentation</a> dresse le portrait de l'institution et du service qui m'ont accueilli tandis que la partie <a href="/projets/">Projets</a> présente le travail effectué en matière d'analyse et de développement.</p> <p>Au sein de la section <a href="/prerequis">Prérequis</a>, vous pourrez retrouver des modules destinés à présenter des outils ou expliquer des concepts qui peuvent aider à mieux comprendre le travail effectué. Leur consultation n'est donc pas obligatoire bien qu'elle soit fortement conseillée avant d'entreprendre la lecture de la partie <a href="/projets/">Projets</a>.</p> <p>Enfin, les <a href="/liens">Liens</a>, permettent de répertorier les différentes sources et informations de contact.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/presentation.html">
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Accueil</span> <!----></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="accueil"><a href="#accueil" class="header-anchor">#</a> Accueil</h1> <p>Ce site est un support me permettant de rendre compte du travail effectué lors de mon apprentissage au sein du service SIG du Conseil Départemental de Meurthe-et-Moselle, à l'occasion de mon année d'étude en Licence Professionnel CIASIE à l'IUT Nancy-Charlemagne.</p> <p>Ce rapport peut être découpé en deux parties : <strong>Présentation</strong> et <strong>Projets</strong>.</p> <p>La partie <a href="/presentation">Présentation</a> dresse le portrait de l'institution et du service qui m'ont accueilli tandis que la partie <strong>Projets</strong>, composée des sections <a href="/projets-annexes/">Projets annexes</a> et <a href="/cartogis54/">CartoGIS54</a>, présente le travail effectué en matière d'analyse et de développement.</p> <p>Au sein de la section <a href="/prerequis">Prérequis</a>, vous pourrez retrouver des modules destinés à présenter des outils ou expliquer des concepts qui peuvent aider à mieux comprendre le travail effectué. Leur consultation n'est donc pas obligatoire bien qu'elle soit fortement conseillée avant d'entreprendre la lecture de la partie <strong>Projets</strong>.</p> <p>Enfin, les <a href="/liens">Liens</a>, permettent de répertorier les différentes sources et informations de contact.</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/presentation.html">
         Présentation
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.0235dcb5.js" defer></script><script src="/assets/js/2.1039ffb8.js" defer></script><script src="/assets/js/15.5f02199a.js" defer></script>
+    <script src="/assets/js/app.95b712ba.js" defer></script><script src="/assets/js/2.823c70a3.js" defer></script><script src="/assets/js/15.1e34ef7d.js" defer></script>
   </body>
 </html>

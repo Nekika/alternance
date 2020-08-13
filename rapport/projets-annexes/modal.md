@@ -211,3 +211,7 @@ Ce premier projet fut une très bonne entrée en matière car il m'a permis de *
 * **Utilisation d'outils existants** : la bonne lecture des documentations m'a permis de réutiliser des outils existants, ici le `localStorage`, et de ne pas "réinventer la roue".
 
 * **Rejoindre un projet en cours** : en travaillant sur un projet existant, j'ai pu me rendre compte des capacités requises pour rejoindre un projet en cours, notament la prise en main des outils et manières de travailler de l'équipe.
+
+### État d'avancement
+
+Ce projet est terminé et la modal a été intégrée en production.

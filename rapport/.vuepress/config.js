@@ -1,18 +1,18 @@
 const prerequisItems = [
-    { text: 'A propos', link: '/prerequis/' },
+    { text: 'À propos', link: '/prerequis/' },
     { text: 'QGIS', link: '/prerequis/qgis' },
     { text: 'QGIS Server', link: '/prerequis/qgis-server' },
     { text: 'Lizmap', link: '/prerequis/lizmap' }
 ]
 
 const projetsAnnexesItems = [
-    { text: 'A propos', link: '/projets-annexes/' },
+    { text: 'À propos', link: '/projets-annexes/' },
     { text: 'Modal', link: '/projets-annexes/modal' },
     { text: 'SMC', link: '/projets-annexes/smc' }
 ]
 
 const cartogis54Items = [
-    { text: 'A propos', link: '/cartogis54/' },
+    { text: 'À propos', link: '/cartogis54/' },
     { text: 'Application client', link: '/cartogis54/client' },
     { text: 'Plugin QGIS', link: '/cartogis54/plugin' },
     { text: 'Bourgs-Centres', link: '/prerequis/bourgs-centres' },

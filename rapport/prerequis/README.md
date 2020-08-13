@@ -1,4 +1,5 @@
 ---
+title: Prérequis - À propos
 prev: /presentation
 next: /prerequis/qgis
 sidebar: false

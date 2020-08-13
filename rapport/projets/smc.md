@@ -6,9 +6,11 @@ title: Projets - SMC
 
 # SMC (Sélection Multi Couches)
 
+![icon-smc](../assets/images/smc/icon.png)
+
 ## Introduction
 
-J'ai été chargé de créer un plugin pour **QGIS** permettant de sélectionner instantanément toutes les entités visibles dans l'interface.
+J'ai été chargé de créer un **plugin** pour QGIS, permettant de **sélectionner d'un seul coup toutes les entités visibles dans l'interface, et ceux pour toutes les couches du projet**.
 
 ::: tip Informations
 
@@ -28,22 +30,22 @@ Ma mission consistant à **développer un plugin**, j'ai donc commencé par pren
 
 ### Intégration d'un plugin
 
-Afin d'intégrer un plugin local, QGIS nous propose de placer notre code dans un répertoire qu'il viendra scanner au démarrage :
+Afin d'intégrer un **plugin local**, QGIS nous propose de placer notre code dans un répertoire qu'il viendra **scanner au démarrage** :
 
 ```shell
 # Exemple de structure de fichiers
 
 -- $REPERTOIRE_QGIS
-  |-- profiles
-    |-- default
-      |-- python
-        |-- plugins
-    |-- mon_profil
-      |-- python
-        |-- plugins
+  |-- profiles/
+    |-- default/
+      |-- python/
+        |-- plugins/
+    |-- mon_profil/
+      |-- python/
+        |-- plugins/
 ```
 
-* `profiles` : le répertoire qui stocke les différents profils utilisateurs.
+* `profiles/` : le répertoire qui stocke les différents profils utilisateurs.
 
 * `profiles/*/python/plugins` : le sous-répertoire scanné par QGIS, dans lequel on peut retrouver le code source des extensions.
 
@@ -67,7 +69,7 @@ Ainsi, sur la documentation officielle de QGIS, on peut retrouver le [PyQGIS Dev
 # Structure minimale
 
 -- $REPERTOIRE_QGIS_PLUGINS
-  |-- mon_super_plugin
+  |-- mon_super_plugin/
     |-- __init__.py
     |-- form.ui
     |-- form.py
@@ -81,7 +83,7 @@ Ainsi, sur la documentation officielle de QGIS, on peut retrouver le [PyQGIS Dev
 
 * `form.ui` : l'interface utilisateur que l'on peut éditer avec [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html).
 
-* `form.py` : la version compilée en Python de `form.ui`.
+* `form.py` : une classe réprésentant l'interface utilisateur du plugin, basée sur le contenu du fichier `form.ui`.
 
 * `metadata.txt` : les métadonnées relatives au plugin.
 
@@ -95,59 +97,7 @@ Ces fichiers composent le **squelette de base** d'un plugin QGIS.
 
 Pour un plugin d'une **plus grande ampleur** il est possible de se retrouver avec des architectures telles que celle-ci : 
 
-```shell
-# Structure complexe
-
--- $REPERTOIRE_QGIS_PLUGINS
-  |-- mon_super_plugin
-    |-- help
-      |-- build
-        |-- html
-    |-- make.bat
-    |-- Makefile
-    |-- source
-      |-- conf.py
-      |-- index.rst
-      |-- _static
-      |-- _templates
-    |-- i18n
-      |-- af.ts
-    |-- icon.png
-    |-- __init__.py
-    |-- Makefile
-    |-- metadata.txt
-    |-- mon_super_plugin_dialog_base.ui
-    |-- mon_super_plugin_dialog.py
-    |-- mon_super_plugin.py
-    |-- pb_tool.cfg
-    |-- plugin_upload.py
-    |-- pylintrc
-    |-- README.html
-    |-- README.txt
-    |-- resources.py
-    |-- resources.qrc
-    |-- scripts
-      |-- compile-strings.sh
-      |-- run-env-linux.sh
-      |-- update-strings.sh
-    |-- test
-      |-- __init__.py
-      |-- qgis_interface.py
-      |-- tenbytenraster.asc
-      |-- tenbytenraster.asc.aux.xml
-      |-- tenbytenraster.keywords
-      |-- tenbytenraster.lic
-      |-- tenbytenraster.prj
-      |-- tenbytenraster.qml
-      |-- test_init.py
-      |-- test_mon_super_plugin_dialog.py
-      |-- test_qgis_environment.py
-      |-- test_resources.py
-      |-- test_translations.py
-      |-- utilities.py
-```
-
-Dans notre cas, une **structure simple** suffira puisque le plugin ne contiendra que **quelques instructions**.
+Dans notre cas, une **structure simple** telle que celle ci-dessus suffira puisque le plugin ne contiendra que **quelques instructions**.
 
 ### Besoin
 
@@ -167,7 +117,7 @@ Je me suis donc chargé de développer une nouvelle version du plugin afin de r�
 
 L'idée est de fournir un outil capable d'effectuer la sélection **en un seul clic** :
 
-<img title="" src="../assets/images/smc/preview.gif" alt="smc_preview" data-align="center">
+![SMC v1 preview](../assets/images/smc/v1-preview.gif)
 
 ::: warning Note
 
@@ -223,6 +173,7 @@ Parmi les méthodes **indispensables**, on peut retrouver `run()`.
 
 C'est elle qui sera appelée lorsque l'utilisateur souhaite se servir du plugin, c'est donc à l'intérieur que l'on va indiquer les **actions à effectuer** :
 
+**`smc.py`**
 ```python
 def run(self):
   layers = get_all_vectorLayers()
@@ -232,10 +183,11 @@ def run(self):
 
 On remarque que cette méthode fait appel à **2 fonctions** et **une autre méthode** :
 
-* **`get_all_vectorLayers()`**
+* `get_all_vectorLayers()`
 
 Cette fonction permet de **récupérer la liste des couches vectorielles** du projet puisque c'est sur celles-ci que sont représentées les entités à sélectionner :
 
+**`tools.py`**
 ```python
 def get_all_vectorLayers():
     res = []
@@ -260,10 +212,11 @@ En se référant à la classe [QgsMapLayer](https://qgis.org/pyqgis/master/core/
 
 La condition `if layer.type() == 0 and layer.name() != "Communes":` permet donc de s'assurer d'une part que la couche traitée est bel et bien de **type vectoriel**, et d'autre par que la couche traitée n'est pas la couche *Communes*.
 
-* **`get_extent()`**
+* `get_extent()`
 
 C'est la méthode qui va permettre de **récupérer les coordonnées de l'emprise** réglée par l'utilisateur :
 
+**`smc.py`**
 ```python
 def get_extent(self):
   mapcanvas = self.iface.mapCanvas()
@@ -273,10 +226,11 @@ def get_extent(self):
 
 La méthode se contente de **récupérer l'instance de [MapCanvas](https://qgis.org/pyqgis/master/gui/QgsMapCanvas.html)** et d'utiliser la méthode `extent()` pour pouvoir **récupérer les coordonées** de l'emprise.
 
-* **`select_features_in_area()`**
+* `select_features_in_area()`
 
 Les tâches effectuées en amont ayant permis de récupérer des données qui sont nécessaires pour pouvoir répondre au besoin, cette dernière fonction va se charger **d'effectuer la sélection** de toutes les entités présentes dans l'emprise :
 
+**`smc.py`**
 ```python
 def select_features_in_area(layers, area):
   for layer in layers:
@@ -287,35 +241,39 @@ Cette fonction très simple fait appel à la méthode `selectByRect` de la class
 
 Dans notre cas, le rectangle n'est autre que **l'emprise** réglée par l'utilisateur.
 
-### Feedback
+### Retour utilisateur
 
-Après quelques mois d'utilisation, les utilisateurs de l'extension m'ont fait quelques retours constructifs quant à l'utilisation réelle de l'extension.
+Après **quelques mois d'utilisation**, les utilisateurs m'ont fait quelques **retours constructifs** quant à **l'utilisation réelle** de l'extension.
 
 #### Point positif
 
-L'extension répond parfaitement au besoin primaire des utilisateurs et leur permet de gagner un temps précieux.
+L'extension **répond parfaitement au besoin primaire** des utilisateurs et leur permet de **gagner un temps précieux**.
 
 #### Points négatifs
 
-* **Sélection trop importante** : la plupart du temps, les utilisateurs ne souhaitent sélectionner des entités qu'au sein d'une, deux voir trois communes. La sélection rectangulaire provque donc une sélection d'un grand nombre d'entités inutiles.
-* **Fonds de plans** : il peut arriver que les utilisateurs aient besoin de sélectionner les fonds de plans. La première version du plugin ne permet absolument pas de le faire.
+* **Sélection trop importante** : la plupart du temps, les utilisateurs ne souhaitent sélectionner des entités qu'au sein d'une, deux voir trois communes. La sélection rectangulaire englobe donc un grand nombre d'entités inutiles.
+* **Fonds de plans** : il peut arriver que les utilisateurs aient besoin de sélectionner les fonds de plans. Or, dans la version actuelle du plugin il est impossible de le faire.
 
 ### Deuxième version
 
-Afin de répondre aux nouveaux besoins des utilisateurs, il a été nécessaire de repenser totalement l'utilisation du plugin.
+Afin de répondre aux **nouveaux besoins** des utilisateurs, il a été nécessaire de **repenser totalement** l'utilisation du plugin.
 
-Très vite, la nécessité de fournir une interface homme-machine est apparue, car les nouvelles fonctionnalités nécessecitent obligatoirement des actions de la part de l'utilisateur.
+Très vite, la nécessité de fournir une **interface homme-machine** est apparue, car les nouvelles fonctionnalités à implémenter nécessecitent obligatoirement des **actions de la part de l'utilisateur**.
 
-Bien que le fonctionnement de l'extension soit plus plus complexe, l'idée derrière reste similaire à celle de la première version :
+Bien que le fonctionnement de l'extension soit **plus complexe**, l'idée derrière reste **similaire** à celle de la première version :
 
-1. **Emprise** : L'utilisateur règle l'emprise sur les communes qui l'intéressent
-2. **Interface utilisateur** : Au lancement du plugin, une interface utilisateur listant ces communes apparaît
-3. **Actions utilisateur** : L'utilisateur peut alors sélectionner les communes sur lesquelles il souhaite effectuer la sélection. Une case à cocher permet d'indiquer à l'extension si elle doit intégrer les fonds de plans dans la sélection
-4. **Lancement de la sélection** : Un bouton *Valider* permet de lancer la sélection
+1. **Emprise** : L'utilisateur règle l'emprise sur les communes qui l'intéressent.
+2. **Interface utilisateur** : Au lancement du plugin, une interface utilisateur listant ces communes apparaît.
+3. **Actions utilisateur** : L'utilisateur peut alors sélectionner les communes sur lesquelles il souhaite effectuer la sélection. Une case à cocher permet d'indiquer à l'extension si elle doit intégrer les fonds de plans dans la sélection.
+4. **Lancement de la sélection** : Un bouton *Valider* permet de lancer la sélection.
+
+![SMC v2 preview](../assets/images/smc/v2-preview.gif)
 
 #### Structure
 
-Au niveau de l'organisation, cette nouvelle version a nécessité le développement de plusieurs modules auxiliaires permettant de rendre le code plus sain : 
+***
+
+Au niveau de l'organisation, cette nouvelle version a nécessité l'ajout de **nouveaux éléments** : 
 
 ```shell
 -- $REPERTOIRE_QGIS_PLUGINS
@@ -323,33 +281,50 @@ Au niveau de l'organisation, cette nouvelle version a nécessité le développem
     |-- utils/
       |-- __init.py__
       |-- ui.py
+    |-- README.md
     |-- __init.py__
     |-- icon.png
     |-- metadata.txt
     |-- pb_tool.cfg
-    |-- smc.py
-    |-- README.md
     |-- resources.py
     |-- resources.qrc
-    |-- tools.py
+    |-- smc.py
+    |-- smc_dialog.py
+    |-- smc_dialog_base.ui
 ```
 
-On remarque ici l'apparition du sous-répertoire `utils` qui contient le fichier `ui.py`. Ce dernier contient des fonctions qui seront utiles pour la construction de l'interface utilisateur.
+* `smc_dialog_base.ui` : la structure de l'interface utilisateur.
+* `smc_dialog.py` : la classe représentant l'interface utilisateur.
+* `utils/ui.py` : un ensemble de fonctions facilitant la manipulation de l'interface utilisateur lors de l'execution du plugin.
 
-La grande partie du fonctionnement de l'extension se trouve toujours au sein du fichier `smc.py`.
+La **majorité du fonctionnement** de l'extension se trouve toujours au sein du fichier `smc.py`.
 
 #### Code
 
-Nous nous contenterons ici de présenter les différences majeures entre la première et la deuxième version.
+***
 
-##### Interface utilisateur
+Nous nous contenterons ici de présenter les **différences majeures** entre les deux versions, n'hésitez donc pas à revoir [les extraits de code](./smc.html#code) de la première version.
 
-Afin de rendre possible l'interaction entre l'utilisateur et l'extension j'ai eu recours à PyQt5, la version Python de Qt : un célebre ensemble de librairies C++.
 
-J'ai commencé par concevoir l'interface à l'aide de Qt Designer, un logiciel permettant de créer des interfaces utilisateurs utilisables avec Qt.
+**Interface utilisateur**
 
-Ensuite, au sein du fichier `utils/ui.py`, j'ai créé des fonctions facilitant le remplissage de la table listant les communes :
+La plus grande différence est l'apparition d'une interface utilisateur au moment où le plugin est lancé. Son rôle est de permettre l'interaction entre l'utilisateur et l'extension.
 
+Afin de rendre cette interaction possible, j'ai eu recours à [PyQt](https://doc.qt.io/qtforpython/) (la version Python de [Qt](https://qt.io) - *un célèbre ensemble de librairies C++*).
+
+![logo-qt](../assets/images/logos/qt.png)
+
+PyQt étant **nativement intégré** à QGIS, je n'ai pas eu à me soucier de la moindre installation.
+
+J'ai commencé par **concevoir l'interface** à l'aide de [Qt Designer](https://doc.qt.io/qt-5/qtdesigner-manual.html), un logiciel permettant de créer des interfaces utilisateurs composées **d'éléments manipulables à l'aide de Qt** ([Qt Widgets](https://doc.qt.io/qt-5/qtwidgets-index.html)).
+
+![SMC v2 QtDesigner](../assets/images/smc/v2-designer.png)
+
+L'interface utilisateur est composée d'une **table** ([QTableWidget](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QTableWidget.html)) dans laquelle seront listées les **communes visibles dans l'emprise**, d'une **case à cocher** ([QCheckBox](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QCheckBox.html)) permettant d'indiquer s'il faut **inclure les fonds de plans** ainsi que d'un **boutton** *Valider* pour **lancer la sélection** et un **boutton** *Annuler* pour **fermer la fenêtre** ([QPushButton](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QPushButton.html)).
+
+Au sein du fichier `utils/ui.py`, on peut retrouver des fonctions qui aideront à créer les éléments à insérer dans la **table** :
+
+**`utils/ui.py`**
 ```python
 from qgis.PyQt.QtWidgets import QTableWidgetItem
 from qgis.PyQt.QtCore import Qt
@@ -374,13 +349,14 @@ def create_rows(communes):
     return rows
 ```
 
-* **`create_label()`** : crée un objet `QTableWidgetItem` qui sera utilisé pour afficher le nom d'une commune
-* **`create_checkbox()`** : crée un object `QTableWidgetItem` qui sera utilisé pour afficher une case à cocher
-* **`create_rows()`** : à partir d'une liste de communes, crée une liste d'objets représentant une ligne à insérer dans la table listant les communes
+* `create_label()` : crée un objet ([QTableWidgetItem](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QTableWidgetItem.html)) qui sera utilisé pour afficher le nom d'une commune.
+* `create_checkbox()` : crée un objet ([QTableWidgetItem](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QTableWidgetItem.html)) qui sera utilisé pour afficher une case à cocher.
+* `create_rows()` : à partir d'une liste de communes, crée une liste d'objets ([QTableWidgetItem](https://doc.qt.io/qtforpython/PySide2/QtWidgets/QTableWidgetItem.html)) représentant une ligne à insérer dans la table listant les communes.
 
 
-Au sein du fichier `smc.py`, ces fonctions s'avèrent utiles afin de remplir la table des communes visibles : 
+La fonction `create_rows()` est appelée au sein de la méthode `fill_table()` :
 
+**`smc.py`**
 ```python
  def fill_table(self, communes):
       rows, table = sorted(ui.create_rows(communes), key=lambda k: k["label"]), self.dlg.tw_communes
@@ -390,21 +366,105 @@ Au sein du fichier `smc.py`, ces fonctions s'avèrent utiles afin de remplir la 
           table.setItem(index, 1, row["checkbox"])
 ```
 
-##### Sélection
+Voici l'interface telle qu'elle a été proposée puis validée par les utilisateurs :
 
-Lorsque l'utilisateur a fait ses choix et qu'il décide de lancer la sélection, le fonctionnement diffère légèrement de la première version :
+![SMC v2 UI](../assets/images/smc/v2-ui.png)
 
+Elle répond aux besoins de **simplicité d'utilisation** et de **pertinence de la sélection** puisqu'elle offre aux utilisateurs la possibiltié de **tout configurer** à l'aide de simples **cases à cocher**.
+
+**Sélection**
+
+Le traitement de la sélection **diffère légèrement** de la première version pour **deux raisons majeures** :
+
+1. **Traitement pré-selection**
+
+Il est nécessaire de **récupérer** et **prendre en compte les choix de l'utilisateur**.
+
+De ce fait, des **étapes supplémentaires** permettant notamment de récupérer la liste des communes sélectionnées ont du être ajoutées :
+
+**`smc.py`**
+```python
+def selected_communes_names(self):
+    res, table = [], self.dlg.tw_communes
+    for row in range(table.rowCount()):
+        is_selected = table.item(row, 1).checkState() == Qt.Checked
+        if is_selected:
+            res.append(table.item(row, 0).text())
+    return res
+
+def selected_communes(self, communes):
+    selected_communes_names = self.selected_communes_names()
+    return [c for c in list(communes.getFeatures()) if c.attribute("nom") in selected_communes_names]
+```
+
+* **`selected_communes_names()`** : se charge de récupérer les noms des communes sélectionnées par l'utilisateur depuis la table listant les communes.
+* **`selected_communes()`** : se charge de récupérer les entités correspondantes (objets `QgsFeature`, voir [l'API](https://qgis.org/pyqgis/master/core/QgsFeature.html?highlight=qgsfeature#module-QgsFeature)) depuis une liste de noms de communes.
+
+Ce traitement est nécessaire puisque nous allons avoir besoin de la **géométrie des communes choisies** afin d'effectuer la **sélection des entités**.
+
+2. **Méthode de sélection**
+
+La sélection est gérée par la méthode `select()` :
+
+**`smc.py`**
+```python
+ def select(self, communes):
+      QApplication.setOverrideCursor(Qt.WaitCursor)
+      layers = [l for l in QgsProject.instance().mapLayers().values() if l.type() == 0 and l.name() != "Communes"]
+      if self.dlg.cb_exclude.checkState() == Qt.Checked:
+          root = QgsProject.instance().layerTreeRoot()
+          basemaps_nodes = root.findGroup("Fonds de plan").findLayers()
+          basemaps_layers = [node.layer() for node in basemaps_nodes]
+          layers = [l for l in QgsProject.instance().mapLayers().values() if l.type() == 0 and l not in basemaps_layers]
+      for l in layers:
+          for c in self.selected_communes(communes):
+              expression = "within($geometry, geom_from_wkt('{wkt}'))".format(wkt=c.geometry().asWkt())
+              l.selectByExpression(expression, 1)
+      QApplication.restoreOverrideCursor()
+      self.dlg.close()
+```
+
+Dans un premier temps, on souhaite déterminer la **liste des couches** à partir desquelles on va **effectuer la sélection**. 
+
+On récupère donc la liste de toutes les **couches vectorielles** du projet (à l'exception de la couche *Communes*), à laquelle on ajoute les couches *Fonds de plans* si l'utilisateur le désire.
+
+Dans un second temps, on entame **la sélection des entités**. On **boucle sur la liste des couches** que l'on vient de déterminer, et pour chacune d'entre elle on **boucle sur la liste des communes** sélectionnées par l'utilisateur.
+
+C'est à ce moment que la méthode de sélection est **totalement différente** de celle employée dans la première version de l'extension. En effet, il s'agit cette fois-ci d'une **sélection par expression** (voir la [documentation](https://docs.qgis.org/3.10/fr/docs/user_manual/working_with_vector/expression.html?highlight=expression)).
+
+***De manière silmplifiée*** : pour chaque couche `L` et pour chaque commune `C`, on crée une **expression** visant toutes les **entités** de `L` dont la **géométrie est contenue** au sein de `C`. On se contente alors **d'ajouter à la sélection** toutes les entités visées.
 
 ## Conclusion
 
-Grâce à [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS, j'ai été en mesure de développer un plugin simple qui **répond entièrement** au besoin défini par les utilisateurs.
+En travaillant à **deux reprises** sur ce projet lors de mon année au sein du service SIG, j'ai pu apprendre **beaucoup de choses**.
 
-Cependant, bien que le résultat final tienne sur une dizaine de lignes, le début du développement s'avéra difficile.
+### Utilisation d'API
 
-En effet, j'ai eu du mal à prendre l'API en main car je n'avais encore jamais eu l'occasion de travailler sur un projet de l'envergure de QGIS.
+Grâce à l'API de [PyQGIS](https://qgis.org/pyqgis/3.0/) et l'API de [PyQt](https://doc.qt.io/qtforpython/), j'ai été en mesure de développer un plugin simple qui **répond entièrement** aux besoins définis par les utilisateurs.
 
-J'ai donc commencé par produire du code qui se trouva être une **mauvaise réecriture** d'outils proposés directement par l'API.
+Cependant, le début du développement et la prise en main de [l'API Python](https://qgis.org/pyqgis/3.0/) de QGIS s'avéra **assez difficile** puisque mon travail sur la première version de l'extension fut ma **première expérience** avec une **API d'une telle ampleur**.
+
+J'ai donc commencé par produire du code qui s'est trouvé être une **mauvaise réecriture** d'outils existants dans l'API.
 
 En voyant que je me dirigeais vers un code assez **compliqué à lire et manipuler**, j'ai décidé de prendre du temps pour **analyser la documentation** de l'API. Par chance, elle se trouve être de bonne qualité, ce qui m'a permis d'arriver au résultat présenté.
 
-Ce projet m'aura appris à **appréhender un projet de grande envergure** et m'aura permis de gagner en rapidité quant à la **recherche d'informations** dans une documentation complexe.
+Lors du développement de la deuxième version de l'extension, j'ai alors été capable de **trouver rapidement** les informations que je cherchais, en parcourant la **documentation** des deux API citées précédemment.
+
+Ce projet m'aura donc appris à **naviguer dans la documentation d'une API**.
+
+### L'importance du retour utilisateur
+
+Le fait d'avoir pu recevoir un **retour constructif** de la part des utilisateurs m'a bien fait comprendre qu'il est **très difficile** de concevoir un produit **comblant les besoins actuels et futurs** de ses utilisateurs.
+
+C'est pour cette raison qu'il s'avère nécessaire d'effectuer un **bon travail d'analyse** et de réfléchir aux **potentiels besoins futurs** des utilisateurs avant de commencer le travail de développement.
+
+### Etat d'avancement
+
+
+Le projet SMC est **terminé** au moment où je rédige ce rapport, puisque l'extension a été **livrée aux utilisateurs finaux**.
+
+Ces derniers m'ont affirmé qu'elle **répondait parfaitement à leurs besoins** et que le résultat c**orrespondait à ce qu'ils attendaient**.
+
+De plus, l'extension **n'est pas figée** et sera capable de **s'adapter** à une éventuelle évolution du projet.
+
+En effet, elle est conçue pour fonctionner même lorsque les utilisateurs auront envie **d'ajouter, supprimer ou bien modifier des couches** au sein du projet.

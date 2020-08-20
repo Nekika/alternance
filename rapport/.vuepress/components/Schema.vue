@@ -1,7 +1,9 @@
 <template>
     <div class="schema">
         <div class="interface">
-            <div v-for="p in parts"
+            <div class="header" style="min-height: 50px"></div>
+            <div class="main">
+                <div v-for="p in parts"
                  :key="p.name"
                  :class="p.name">
                 <div v-for="c in p.children"
@@ -9,8 +11,13 @@
                      :class="c.name">
                 </div>
             </div>
+            </div>
         </div>
         <ul class="cartouche">
+            <li>
+                <span class="symbole header"></span>
+                En-tête
+            </li>
             <li v-for="s in symbols" :key="s">
                 <span :class="`symbole ${s}`"></span>
                 {{ firstLetterToUppercase(s) }}
@@ -46,7 +53,12 @@ export default {
 </script>
 
 <style scoped>
-    .interface {
+    
+    .header {
+        border: solid 1px rgba(0, 128, 128);
+        background-color: rgba(0, 128, 128, 0.3);
+    }
+    .main {
         min-height: 300px;
         display: grid;
     }

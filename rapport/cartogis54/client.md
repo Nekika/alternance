@@ -6,6 +6,8 @@ next: /cartogis54/plugin
 
 # Application client
 
+## Introduction
+
 Le développement de l'application client représente la majeure partie du travail effectué sur ce projet.
 
 ::: tip Informations

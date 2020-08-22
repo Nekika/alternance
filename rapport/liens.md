@@ -1,5 +1,5 @@
 ---
-prev: /cartogis54/bourgs-centres
+prev: /cartogis54/plugin
 ---
 
 # Liens

@@ -1,7 +1,7 @@
 ---
 title: CartoGIS54 - Plugin QGIS
 prev: /cartogis54/client
-next: /cartogis54/bourgs-centres
+next: /liens
 ---
 
 # Plugin QGIS

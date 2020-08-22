@@ -35,11 +35,3 @@ Une **interface** permettant **d'intéragir avec des géodonnées depuis un navi
 ### **[Plugin QGIS](/cartogis54/plugin)**
 
 Une **extension** facilitant **la configuration de l'application client en se basant sur la configuration du projet QGIS**.
-
-## Exemple d'application
-
-### **[Bourgs-Centres](/cartogis54/bourgs-centres)**
-
-**Bourgs-Centres** est le projet à l'origine de la création de **CartoGIS54**. 
-
-Il s'agit d'une solution permettant aux maires de certaines communes du **Département de Meurthe-et-Moselle** de **localiser** et de **saisir des informations à propos de projets d'amménagements futurs ou existants**.

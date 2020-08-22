@@ -15,7 +15,6 @@ const cartogis54Items = [
     { text: 'À propos', link: '/cartogis54/' },
     { text: 'Application client', link: '/cartogis54/client' },
     { text: 'Plugin QGIS', link: '/cartogis54/plugin' },
-    { text: 'Bourgs-Centres', link: '/cartogis54/bourgs-centres' },
 ]
 
 module.exports = {

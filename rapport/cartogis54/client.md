@@ -66,6 +66,8 @@ L'analyse du besoin et de l'expérience utilisateur a servi à établir un liste
 
 Voici une démonstration permettant de visualiser l'état d'avancement du projet :
 
+![preview](../assets/images/cartogis54/preview.gif)
+
 ::: warning Note
 
 Cette démonstration présente une version en cours de développement.
